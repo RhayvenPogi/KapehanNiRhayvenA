@@ -9,7 +9,6 @@ public class Main {
     static final String KOPISHAP = "ResiboNgKapehan";
 
     public static void main(String[] args) {
-
         double[][] coffeeData = {
                 {50.00, 0}, // Espresso
                 {70.00, 0}, // Latte
@@ -50,7 +49,7 @@ public class Main {
                 double itemTotal = quantity * prices;
                 subtotal += itemTotal;
                 receipt.append(String.format("%-10s%-10s%-10s%-10s\n", "ORDER", "ITEM", "QUANTITY", "SUBTOTAL"));
-                receipt.append(String.format("%-10d%-10s%-10f%-10.2f\n", order, options[i], quantity, itemTotal));
+                receipt.append(String.format("%-10d%-10s%-10.0f%-10.2f\n", order, options[i], quantity, itemTotal));
             }
         }
 
@@ -63,30 +62,15 @@ public class Main {
         receipt.append(String.format("VAT (12%%): %-10.2f\n", VAT));
         receipt.append(String.format("Grand Total: %-10.2f\n", grandTotal));
 
-        Scanner pogi = new Scanner(System.in);
-        double bayad = 0.0;
-        System.out.print("Enter your payment: ");
-        // Use try-catch block to handle exceptions
-        try {
-            bayad = Double.parseDouble(pogi.nextLine());  // Read and parse the input as a double
-            System.out.println("Your payment is: " + bayad);
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input! Please enter a valid number.");
-        }
+        double payment = getValidPayment("Enter your payment: ", grandTotal);
+        double change = payment - grandTotal;
+        receipt.append(String.format("Payment: %-10.2f\n", payment));
+        receipt.append(String.format("Change: %-10.2f\n", change));
 
-        if (bayad >= grandTotal){
-            receipt.append(String.format("Payment: %-10.2f\n", bayad));
-            double sukli = bayad - grandTotal;
-            receipt.append(String.format("Change: %-10.2f", sukli));
+        System.out.println(receipt);
 
-            System.out.println(receipt.toString());
-            System.out.println();
-            // Generate a random file name
-            int fileName = (int) (Math.random() * 8999) + 1000; // Ensure a 4-digit number
-            saveToFile(fileName + "_KapehanResibo.txt", receipt.toString());
-        } else{
-            System.out.println("Your payment is less than the Grand Total");
-        }
+        int fileName = (int) (Math.random() * 8999) + 1000;
+        saveToFile(fileName + "_KapehanResibo.txt", receipt.toString());
     }
 
     public static int getNumber(String prompt, int min, int max) {
@@ -122,6 +106,25 @@ public class Main {
                 }
             } else {
                 System.out.println("Invalid input. Please enter a valid number.");
+                pogi.nextLine(); // Clear invalid input
+            }
+        }
+    }
+
+    public static double getValidPayment(String prompt, double grandTotal) {
+        Scanner pogi = new Scanner(System.in);
+        double payment;
+        while (true) {
+            System.out.print(prompt);
+            if (pogi.hasNextDouble()) {
+                payment = pogi.nextDouble();
+                if (payment >= grandTotal) {
+                    return payment;
+                } else {
+                    System.out.println("Your payment is less than the Grand Total. Please enter a valid amount.");
+                }
+            } else {
+                System.out.println("Invalid input! Please enter a valid number.");
                 pogi.nextLine(); // Clear invalid input
             }
         }
