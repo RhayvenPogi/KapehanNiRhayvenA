@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        double[][] cofeeData = {
+        double[][] coffeeData = {
                 {50.00, 0}, // Espresso
                 {70.00, 0}, // Latte
                 {65.00, 0}, // Cappuccino
@@ -35,7 +35,7 @@ public class Main {
             }
 
             int quantity = noLimits("Enter quantity: ");
-            cofeeData[choice - 1][1] += quantity;
+            coffeeData[choice - 1][1] += quantity;
             order++;
         }
 
@@ -43,9 +43,9 @@ public class Main {
         StringBuilder receipt = new StringBuilder();
         receipt.append("---- Coffee Order Receipt ----\n");
 
-        for (int i = 0; i < cofeeData.length; i++) {
-            double prices = cofeeData[i][0];
-            double quantity = cofeeData[i][1];
+        for (int i = 0; i < coffeeData.length; i++) {
+            double prices = coffeeData[i][0];
+            double quantity = coffeeData[i][1];
             if (quantity > 0) {
                 double itemTotal = quantity * prices;
                 subtotal += itemTotal;
