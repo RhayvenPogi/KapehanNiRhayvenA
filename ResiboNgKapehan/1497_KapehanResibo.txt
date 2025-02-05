@@ -1,0 +1,9 @@
+---- Coffee Order Receipt ----
+ORDER     ITEM      QUANTITY  SUBTOTAL  
+1         Cappuccino44.000000 2860.00   
+------------------------------
+Subtotal: 2860.00   
+VAT (12%): 343.20    
+Grand Total: 3203.20   
+Payment: 3000.00   
+Change: -203.20   

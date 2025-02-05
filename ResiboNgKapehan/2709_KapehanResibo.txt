@@ -1,0 +1,11 @@
+---- Coffee Order Receipt ----
+ORDER     ITEM      QUANTITY  SUBTOTAL  
+3         Espresso  44.000000 2200.00   
+ORDER     ITEM      QUANTITY  SUBTOTAL  
+3         Cappuccino68.000000 4420.00   
+------------------------------
+Subtotal: 6620.00   
+VAT (12%): 794.40    
+Grand Total: 7414.40   
+Payment: 8000.00   
+Change: 585.60    

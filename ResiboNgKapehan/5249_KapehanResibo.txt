@@ -1,0 +1,11 @@
+---- Coffee Order Receipt ----
+ORDER     ITEM      QUANTITY  SUBTOTAL  
+2         Latte     4.000000  280.00    
+ORDER     ITEM      QUANTITY  SUBTOTAL  
+2         Cappuccino55.000000 3575.00   
+------------------------------
+Subtotal: 3855.00   
+VAT (12%): 462.60    
+Grand Total: 4317.60   
+Payment: 0.00      
+Change: -4317.60  
