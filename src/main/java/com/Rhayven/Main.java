@@ -19,7 +19,7 @@ public class Main {
         int order = 0;
 
         while (true) {
-            System.out.printf("""
+            System.out.print("""
                 --- Coffee Menu ---
                 1. Espresso - 50.00 PHP
                 2. Latte - 70.00 PHP
@@ -27,9 +27,9 @@ public class Main {
                 4. Mocha - 80.00 PHP
                 0. Finish Order
                 """);
-
-            int choice = getNumber("Choose your coffee (1-4, or 0 to finish): ", 0, 4);
+offee (1-4, or 0 to finish): ", 0, 4);
             if (choice == 0) {
+            int choice = getNumber("Choose your c
                 break;
             }
 
