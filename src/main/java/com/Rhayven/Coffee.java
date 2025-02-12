@@ -27,17 +27,10 @@ public class Coffee {
         this.brewMethod = brewMethod;
     }
 
-    public double calculatePrice(String size) {
-        switch (size.toLowerCase()) {
-            case "small":
-                return price;
-            case "medium":
-                return price + 15;
-            case "large":
-                return price + 30;
-            default:
-                return price;
-        }
+    public double calculatePrice() {
+        if ("medium".equalsIgnoreCase(size)) return price + 15;
+        if ("large".equalsIgnoreCase(size)) return price + 30;
+        return price; // Default small
     }
 
     public boolean checkStock() {
@@ -54,7 +47,7 @@ public class Coffee {
     }
 
     public void updateStock(int quantity) {
-        stock += quantity;
+        stock -= quantity;
     }
 
     public String describe() {
@@ -101,5 +94,6 @@ public class Coffee {
         System.out.println();
 
         System.out.println("Brew Method: " + brewMethod);
+        System.out.println("----------------------------");
     }
 }
