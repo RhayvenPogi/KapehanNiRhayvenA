@@ -11,7 +11,6 @@ public class Main {
         System.out.println("===== Initial Coffee Details =====");
         coffee1.displayInfo();
         System.out.println(coffee1.describe());
-        System.out.println();
 
         // Apply discount and show updated price
         System.out.println("----------------------------------");
@@ -28,7 +27,8 @@ public class Main {
         System.out.println("===== Updated Coffee Details =====");
         coffee1.displayInfo();
         System.out.println(coffee1.describe());
-        System.out.println("==================================");
+        System.out.println("======================================================");
+        System.out.println();
         System.out.println();
 
 
@@ -38,12 +38,12 @@ public class Main {
         System.out.println("===== Initial Coffee Details =====");
         coffee2.displayInfo();
         System.out.println(coffee2.describe());
-        System.out.println("----------------------------------\n");
+        System.out.println("----------------------------------");
 
         // Apply discount and show updated price
         double newPrice2 = coffee2.discount(10);
         System.out.println("Latte Price after the discount: ₱" + newPrice2);
-        System.out.println("----------------------------------\n");
+        System.out.println("----------------------------------");
 
         // Modify
         coffee2.addFlavor("Cinnamon");
@@ -55,6 +55,6 @@ public class Main {
         System.out.println("===== Updated Coffee Details =====");
         coffee2.displayInfo();
         System.out.println(coffee2.describe());
-        System.out.println("==================================");
+        System.out.println("======================================================");
     }
 }
