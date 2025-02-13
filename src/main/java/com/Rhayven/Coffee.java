@@ -70,9 +70,11 @@ public class Coffee {
         this.roastLevel = newRoastLevel;
     }
 
-    public void discount(double percentage) {
-        price -= price * (percentage / 100);
+    public double discount(double percentage) {
+        double discountedPrice = price - price * (percentage / 100);
+        return discountedPrice;
     }
+
 
     public void displayInfo() {
         System.out.println("Coffee: " + name);
