@@ -4,29 +4,69 @@
     <meta charset="UTF-8">
     <title>About me</title>
     <style>
-        .body{
-            display: block;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: 'Arial', sans-serif;
             background-color: #F6F4EB;
+            color: #333;
             text-align: center;
+            padding: 0 20px;
         }
         header{
             background-color: #4682A9;
             color: #F6F4EB;
-            padding: 10px;
-            margin: 0;
+            padding: 20px 0;
         }
         #favoriteQuote, #descriptionAboutSelf{
             font-size: 20px;
             font-weight: bold;
         }
+        header ~ h1 {
+            font-size: 40px;
+            letter-spacing: 1px;
+        }
+        .content {
+            width: 700px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+         .content > h1 {
+            font-size: 30px;
+            color: #4682A9;
+            margin-bottom: 15px;
+        }
+
+        .content > p {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .content > q {
+            font-size: 10px;
+            font-style: italic;
+            color: #4682A9;
+            display: block;
+            margin: 20px 0;
+        }
+
+        .content > #descriptionAboutSelf {
+            font-size: 15px;
+            color: #666;
+        }
     </style>
 
 </head>
-<body class="body">
+<body>
     <header>
         <h1>Welcome Fareco</h1>
     </header>
-    <div>
+    <div  class="content">
         <h1 id="fullName" th:text="${fullName}">the full name will appear</h1>
         <p>Full Name</p>
         <q id="favoriteQuote" th:text="${favoriteQuote}">the favorite Quote will appear</q>
