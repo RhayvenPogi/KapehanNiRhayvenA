@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>About me</title>
+    <style>
+        .body{
+            display: block;
+            background-color: #F6F4EB;
+            text-align: center;
+        }
+        header{
+            background-color: #4682A9;
+            color: #F6F4EB;
+            padding: 10px;
+            margin: 0;
+        }
+        #favoriteQuote, #descriptionAboutSelf{
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body class="body">
+    <header>
+        <h1>Welcome Fareco</h1>
+    </header>
+    <div>
+        <h1 id="fullName" th:text="${fullName}">the full name will appear</h1>
+        <p>Full Name</p>
+        <q id="favoriteQuote" th:text="${favoriteQuote}">the favorite Quote will appear</q>
+        <p>Favorite Quote</p>
+        <p id="descriptionAboutSelf" th:text="${descriptionAboutSelf}">the description about self will appear</p>
+        <p>Description About Self</p>
+    </div>
+
+</body>
+</html>
