@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Coffee List</title>
+</head>
+<body>
+    <form action="/save" method="post">
+      <label>Coffee Name: <input type="text" name="CoffeeName" required></label><br>
+      <label>Type: <input type="text" name="type" required></label><br>
+      <label>Size: <input type="text" name="size" required></label><br>
+      <label>Price: <input type="number" name="price" required></label><br>
+      <label>Roast Level: <input type="text" name="roastLevel" required></label><br>
+      <label>Origin: <input type="text" name="origin" required></label><br>
+      <label>Decaffeinated: <input type="checkbox" name="decaffeinated" required></label><br>
+      <label>Stock: <input type="text" name="stock" required></label><br>
+      <label>Flavor Notes: <input type="text" name="flavorNotes" required></label><br>
+      <label>Brew Method: <input type="text" name="brewMethod" required></label><br>
+      <button type="submit">Add Coffee List</button>
+    </form>
+    <a href="/">Back to List</a>
+</body>
+</html>
