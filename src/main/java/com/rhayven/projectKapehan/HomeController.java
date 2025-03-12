@@ -46,7 +46,7 @@ public class HomeController {
                              @RequestParam double price,
                              @RequestParam String roastLevel,
                              @RequestParam String origin,
-                             @RequestParam boolean isDecaf,
+                             @RequestParam (defaultValue = "false") boolean isDecaf,
                              @RequestParam int stock,
                              @RequestParam List<String> flavorNotes,
                              @RequestParam String brewMethod) {
@@ -74,7 +74,7 @@ public class HomeController {
                                @RequestParam double price,
                                @RequestParam String roastLevel,
                                @RequestParam String origin,
-                               @RequestParam boolean isDecaf,
+                               @RequestParam(defaultValue = "false") boolean isDecaf,
                                @RequestParam int stock,
                                @RequestParam List<String> flavorNotes,
                                @RequestParam String brewMethod) {
