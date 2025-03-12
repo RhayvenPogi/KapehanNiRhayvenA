@@ -22,18 +22,18 @@ public class Coffee {
     }
 
     /**
-     * Constructor to accept property values
-     * @param id
-     * @param name
-     * @param type
-     * @param size
-     * @param price
-     * @param roastLevel
-     * @param origin
-     * @param isDecaf
-     * @param stock
-     * @param flavorNotes
-     * @param brewMethod
+     * Constructor to initialize coffee properties.
+     * @param id Coffee ID.
+     * @param name Coffee name.
+     * @param type Coffee type (e.g., Arabica, Robusta).
+     * @param size Coffee size (e.g., Small, Medium, Large).
+     * @param price Coffee price.
+     * @param roastLevel Roast level (e.g., Light, Medium, Dark).
+     * @param origin Coffee origin country.
+     * @param isDecaf Whether the coffee is decaffeinated.
+     * @param stock Available stock quantity.
+     * @param flavorNotes List of flavor notes.
+     * @param brewMethod Recommended brewing method.
      */
     public Coffee(int id, String name, String type, String size, double price, String roastLevel, String origin, boolean isDecaf, int stock, List<String> flavorNotes, String brewMethod) {
         this.id = id;

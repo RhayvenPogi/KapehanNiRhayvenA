@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Coffee Form</title>
 </head>
 <body>
+<!-- Form to update a coffee -->
+<form action="" method="post" th:action="${coffee != null} ? '/update' : '/save'">
+  <input type="hidden" name="id" th:if="${coffee != null}" th:value="${coffee.id}">
+  <label>Coffee Name: <input type="text" name="name" th:value="${coffee?.name}" required></label><br>
+  <label>Type: <input type="text" name="type" th:value="${coffee?.type}" required></label><br>
+  <label>Size: <input type="text" name="size" th:value="${coffee?.size}" required></label><br>
+  <label>Price: <input type="text" name="price" th:value="${coffee?.price}" required></label><br>
+  <label>Roast Level: <input type="text" name="roastLevel" th:value="${coffee?.roastLevel}" required></label><br>
+  <label>Origin: <input type="text" name="origin" th:value="${coffee?.origin}" required></label><br>
+  <label>Decaffeinated: <input type="checkbox" name="isDecaf" th:checked="${coffee?.isDecaf}" value="true"></label><br>
+  <label>Stock: <input type="number" name="stock" th:value="${coffee?.stock}" required></label><br>
+  <label>Flavor Notes: <input type="text" name="flavorNotes" th:value="${coffee?.flavorNotes}" required></label><br>
+  <label>Brew Method: <input type="text" name="brewMethod" th:value="${coffee?.brewMethod}" required></label><br>
 
-<form action="/update" method="post">
-  <input type="hidden" name="id" th:value="${coffee.id}">
-  <label>Name: <input type="text" name="name" th:value="${coffee.name}" required></label><br>
-  <label>Type: <input type="text" name="type" th:value="${coffee.type}" required></label><br>
-  <label>Size: <input type="text" name="size" th:value="${coffee.size}" required></label><br>
-  <label>Price: <input type="text" name="price" th:value="${coffee.price}" required></label><br>
-  <label>Roast Level: <input type="text" name="roastLevel" th:value="${coffee.roastLevel}" required></label><br>
-  <label>Origin: <input type="text" name="origin" th:value="${coffee.origin}" required></label><br>
-  <label>Decaf: <input type="checkbox" name="isDecaf" th:checked="${coffee.isDecaf}" value="true"></label><br>
-  <label>Stock: <input type="number" name="stock" th:value="${coffee.stock}" required></label><br>
-  <label>Flavor Notes: <input type="text" name="flavorNotes" th:value="${coffee.flavorNotes}" required></label><br>
-  <label>Brew Method: <input type="text" name="brewMethod" th:value="${coffee.brewMethod}" required></label><br>
-  <button type="submit">Update Coffee</button>
+  <!-- Button to submit the form -->
+  <button type="submit" th:text="${coffee != null} ? 'Update Coffee' : 'Add Coffee'"></button>
 </form>
 
+<!-- Link to navigate back to the coffee list -->
 <a href="/">Back to List</a>
-
 </body>
 </html>

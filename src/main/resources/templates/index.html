@@ -4,40 +4,46 @@
     <title>Coffee List</title>
 </head>
 <body>
-    <h1>Available Coffees</h1>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Coffee Name</th>
-            <th>Type</th>
-            <th>Size</th>
-            <th>Price</th>
-            <th>Roast Level</th>
-            <th>Origin</th>
-            <th>Decaffeinated</th>
-            <th>Stock</th>
-            <th>Flavor Notes</th>
-            <th>Brew Method</th>
-            <th>Actions</th>
-        </tr>
-        <tr th:each="coffee: ${coffees}">
-            <td th:text="${coffee.id}"></td>
-            <td th:text="${coffee.name}"></td>
-            <td th:text="${coffee.type}"></td>
-            <td th:text="${coffee.size}"></td>
-            <td th:text="${coffee.price}"></td>
-            <td th:text="${coffee.roastLevel}"></td>
-            <td th:text="${coffee.origin}"></td>
-            <td th:text="${coffee.isDecaf}"></td>
-            <td th:text="${coffee.stock}"></td>
-            <td th:text="${coffee.flavorNotes}"></td>
-            <td th:text="${coffee.brewMethod}"></td>
-            <td>
-                <a th:href="@{/delete(id=${coffee.id})}" onclick="return confirm('Are you sure?');">Delete</a>
-                <a th:href="@{/edit(id=${coffee.id})}">Edit</a>
-            </td>
-        </tr>
-    </table>
-    <a href="/add">Add New Coffee</a>
+<h1>Available Coffees</h1>
+
+<!-- Table displaying coffee details -->
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Coffee Name</th>
+        <th>Type</th>
+        <th>Size</th>
+        <th>Price</th>
+        <th>Roast Level</th>
+        <th>Origin</th>
+        <th>Decaffeinated</th>
+        <th>Stock</th>
+        <th>Flavor Notes</th>
+        <th>Brew Method</th>
+        <th>Actions</th>
+    </tr>
+
+    <!-- Loop through coffee list and display each coffee's attributes -->
+    <tr th:each="coffee: ${coffees}">
+        <td th:text="${coffee.id}"></td>
+        <td th:text="${coffee.name}"></td>
+        <td th:text="${coffee.type}"></td>
+        <td th:text="${coffee.size}"></td>
+        <td th:text="${coffee.price}"></td>
+        <td th:text="${coffee.roastLevel}"></td>
+        <td th:text="${coffee.origin}"></td>
+        <td th:text="${coffee.isDecaf}"></td>
+        <td th:text="${coffee.stock}"></td>
+        <td th:text="${coffee.flavorNotes}"></td>
+        <td th:text="${coffee.brewMethod}"></td>
+        <td>
+            <a th:href="@{/delete(id=${coffee.id})}" onclick="return confirm('Are you sure?');">Delete</a>
+            <a th:href="@{/edit(id=${coffee.id})}">Edit</a>
+        </td>
+    </tr>
+</table>
+
+<!-- Link to add a new coffee -->
+<a href="/add">Add New Coffee</a>
 </body>
 </html>
