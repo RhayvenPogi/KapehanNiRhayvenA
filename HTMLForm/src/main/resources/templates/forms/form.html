@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Practice Form</title>
+  <style>
+    body {
+      background-color: rgba(104, 124, 106, 0.85);
+      font-family: Arial, Helvetica, sans-serif;
+      color:  rgb(27, 38, 27);
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      background-color: rgba(191, 218, 200, 0.874);
+      width: 50%;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    }
+
+    h2 {
+      text-align: center;
+      background-color: rgb(70, 98, 70);
+      color: white;
+      padding: 15px;
+      margin: -20px -20px 20px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 97%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    input[type="submit"] {
+      background-color: rgb(0, 123, 255);
+      color: white;
+    }
+
+    input[type="submit"]:hover {
+      background-color: rgb(0, 92, 191);
+    }
+
+    input[type="reset"] {
+      background-color: rgb(220, 53, 69);
+      color: white;
+    }
+
+    input[type="reset"]:hover {
+      background-color: rgb(170, 30, 47);
+    }
+
+  </style>
+</head>
+<body>
+  <div>
+    <h2>Student Form</h2>
+    <form th:action="@{/submit}" method="post">
+      <label>Name:</label>
+      <input type="text" name="name" required/> <br>
+
+      <label>Password:</label>
+      <input type="password" id="password" name="password" required> <br>
+
+      <label>Email:</label>
+      <input type="text" name="email" required/> <br>
+
+      <label>Age:</label>
+      <input type="number" id="age" name="age" min="1" max="100"> <br>
+
+      <label>Gender:</label>
+      <input type="radio" name="gender" value="male"> Male
+      <input type="radio" name="gender" value="female"> Female <br>
+
+      <label>Interests:</label>
+      <input type="checkbox" name="interests" value="sports"> Sports
+      <input type="checkbox" name="interests" value="music"> Music
+      <input type="checkbox" name="interests" value="reading"> Reading <br>
+
+      <label>Country:</label>
+      <select name="country">
+        <option value="USA">USA</option>
+        <option value="CANADA">Canada</option>
+        <option value="UK">UK</option>
+      </select> <br>
+
+      <label>Message:</label>
+      <textarea name="message" rows="4" cols="50"></textarea> <br>
+
+      <label>Date of Birth:</label>
+      <input type="date" name="dob"> <br>
+
+      <input type="submit" value="Submit">
+      <input type="reset" value="Reset">
+    </form>
+  </div>
+</body>
+</html>
