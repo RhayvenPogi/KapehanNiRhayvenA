@@ -4,24 +4,25 @@
   <title>Practice Form</title>
   <style>
     body {
-      background-color: rgba(104, 124, 106, 0.85);
+      background-color: #F2EFE7;
       font-family: Arial, Helvetica, sans-serif;
-      color: rgb(27, 38, 27);
+      color: #2c3e50;
       margin: 0;
       padding: 0;
     }
 
     div {
-      background-color: rgba(191, 218, 200, 0.874);
+      background-color: #48A6A7;
       width: 50%;
       margin: 20px auto;
       padding: 20px;
       border-radius: 5px;
+      box-shadow: 0px 0px 10px 0px #000000;
     }
 
     h2 {
       text-align: center;
-      background-color: rgb(70, 98, 70);
+      background-color: #48A6A7;
       color: white;
       padding: 15px;
       margin: -20px -20px 20px;
@@ -37,8 +38,6 @@
 
     label {
       font-weight: bold;
-      display: block;
-      margin-bottom: 5px;
     }
 
     input[type="text"],
@@ -47,7 +46,7 @@
     input[type="date"],
     select,
     textarea {
-      width: 97%;
+      width: 100%;
       padding: 8px;
       border: 1px solid #ccc;
       border-radius: 5px;
@@ -58,29 +57,16 @@
       resize: vertical;
     }
 
-    input[type="radio"],
-    input[type="checkbox"] {
-      width: auto;
-      margin-right: 5px;
-      cursor: pointer;
-    }
-
-    /* Keep radio buttons aligned and spaced */
-    .radio-group {
+    .radio-group,
+    .checkbox-group {
       display: flex;
       gap: 15px;
     }
 
-    .radio-option {
-      display: flex;
-      align-items: center;
-    }
-
-    /* Keep checkboxes aligned vertically */
-    .checkbox-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    input[type="radio"],
+    input[type="checkbox"] {
+      width: auto;
+      margin-right: 5px;
     }
 
     input[type="submit"],
@@ -95,21 +81,21 @@
     }
 
     input[type="submit"] {
-      background-color: rgb(0, 123, 255);
+      background-color: black;
       color: white;
     }
 
     input[type="submit"]:hover {
-      background-color: rgb(0, 92, 191);
+      background-color: #2c8283;
     }
 
     input[type="reset"] {
-      background-color: rgb(220, 53, 69);
+      background-color: #e74c3c;
       color: white;
     }
 
     input[type="reset"]:hover {
-      background-color: rgb(170, 30, 47);
+      background-color: #c0392b;
     }
   </style>
 </head>
@@ -131,11 +117,11 @@
 
     <label>Gender:</label>
     <section class="radio-group">
-      <div class="radio-option">
+      <div>
         <input type="radio" name="gender" id="male" value="male">
         <label for="male">Male</label>
       </div>
-      <div class="radio-option">
+      <div>
         <input type="radio" name="gender" id="female" value="female">
         <label for="female">Female</label>
       </div>
@@ -143,15 +129,15 @@
 
     <label>Interests:</label>
     <section class="checkbox-group">
-      <div class="checkbox-option">
+      <div>
         <input type="checkbox" name="interests" value="sports" id="sports">
         <label for="sports">Sports</label>
       </div>
-      <div class="checkbox-option">
+      <div>
         <input type="checkbox" name="interests" value="music" id="music">
         <label for="music">Music</label>
       </div>
-      <div class="checkbox-option">
+      <div>
         <input type="checkbox" name="interests" value="reading" id="reading">
         <label for="reading">Reading</label>
       </div>
@@ -165,7 +151,7 @@
     </select>
 
     <label for="message">Message:</label>
-    <textarea id="message" name="message" rows="4" cols="50"></textarea>
+    <textarea id="message" name="message" rows="4"></textarea>
 
     <label for="dob">Date of Birth:</label>
     <input type="date" id="dob" name="dob">
