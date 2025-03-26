@@ -9,7 +9,7 @@ import java.util.Map;
 @Controller
 public class FormController {
 
-    @GetMapping("/forms/form.html")
+    @GetMapping("/form")
     public String showForm() {
         return "forms/form";
     }

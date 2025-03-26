@@ -6,7 +6,7 @@
     body {
       background-color: rgba(104, 124, 106, 0.85);
       font-family: Arial, Helvetica, sans-serif;
-      color:  rgb(27, 38, 27);
+      color: rgb(27, 38, 27);
       margin: 0;
       padding: 0;
     }
@@ -17,7 +17,6 @@
       margin: 20px auto;
       padding: 20px;
       border-radius: 5px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     }
 
     h2 {
@@ -61,10 +60,27 @@
 
     input[type="radio"],
     input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
+      width: auto;
       margin-right: 5px;
       cursor: pointer;
+    }
+
+    /* Keep radio buttons aligned and spaced */
+    .radio-group {
+      display: flex;
+      gap: 15px;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+    }
+
+    /* Keep checkboxes aligned vertically */
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     input[type="submit"],
@@ -95,50 +111,68 @@
     input[type="reset"]:hover {
       background-color: rgb(170, 30, 47);
     }
-
   </style>
 </head>
 <body>
-  <div>
-    <h2>Student Form</h2>
-    <form th:action="@{/submit}" method="post">
-      <label>Name:</label>
-      <input type="text" name="name" required/> <br>
+<div>
+  <h2>Student Form</h2>
+  <form th:action="@{/submit}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required/>
 
-      <label>Password:</label>
-      <input type="password" id="password" name="password" required> <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
 
-      <label>Email:</label>
-      <input type="text" name="email" required/> <br>
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" required/>
 
-      <label>Age:</label>
-      <input type="number" id="age" name="age" min="1" max="100"> <br>
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" min="1" max="100">
 
-      <label>Gender:</label>
-      <input type="radio" name="gender" value="male"> Male
-      <input type="radio" name="gender" value="female"> Female <br>
+    <label>Gender:</label>
+    <section class="radio-group">
+      <div class="radio-option">
+        <input type="radio" name="gender" id="male" value="male">
+        <label for="male">Male</label>
+      </div>
+      <div class="radio-option">
+        <input type="radio" name="gender" id="female" value="female">
+        <label for="female">Female</label>
+      </div>
+    </section>
 
-      <label>Interests:</label>
-      <input type="checkbox" name="interests" value="sports"> Sports
-      <input type="checkbox" name="interests" value="music"> Music
-      <input type="checkbox" name="interests" value="reading"> Reading <br>
+    <label>Interests:</label>
+    <section class="checkbox-group">
+      <div class="checkbox-option">
+        <input type="checkbox" name="interests" value="sports" id="sports">
+        <label for="sports">Sports</label>
+      </div>
+      <div class="checkbox-option">
+        <input type="checkbox" name="interests" value="music" id="music">
+        <label for="music">Music</label>
+      </div>
+      <div class="checkbox-option">
+        <input type="checkbox" name="interests" value="reading" id="reading">
+        <label for="reading">Reading</label>
+      </div>
+    </section>
 
-      <label>Country:</label>
-      <select name="country">
-        <option value="USA">USA</option>
-        <option value="CANADA">Canada</option>
-        <option value="UK">UK</option>
-      </select> <br>
+    <label for="country">Country:</label>
+    <select name="country" id="country">
+      <option value="USA">USA</option>
+      <option value="CANADA">Canada</option>
+      <option value="UK">UK</option>
+    </select>
 
-      <label>Message:</label>
-      <textarea name="message" rows="4" cols="50"></textarea> <br>
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="4" cols="50"></textarea>
 
-      <label>Date of Birth:</label>
-      <input type="date" name="dob"> <br>
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob">
 
-      <input type="submit" value="Submit">
-      <input type="reset" value="Reset">
-    </form>
-  </div>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+  </form>
+</div>
 </body>
 </html>
