@@ -5,24 +5,53 @@
     <title>New Coffee List</title>
 </head>
 <body>
-<!-- Form to add a new coffee -->
-<form action="/save" method="post">
-    <label>Coffee Name: <input type="text" name="name" required></label><br>
-    <label>Type: <input type="text" name="type" required></label><br>
-    <label>Size: <input type="text" name="size" required></label><br>
-    <label>Price: <input type="text" name="price" required></label><br>
-    <label>Roast Level: <input type="text" name="roastLevel" required></label><br>
-    <label>Origin: <input type="text" name="origin" required></label><br>
-    <label>Decaffeinated: <input type="checkbox" name="isDecaf" value="true"></label><br>
-    <label>Stock: <input type="number" name="stock" required></label><br>
-    <label>Flavor Notes: <input type="text" name="flavorNotes" required></label><br>
-    <label>Brew Method: <input type="text" name="brewMethod" required></label><br>
+<div>
+    <!-- Form to add a new coffee -->
+    <form action="/save" method="post">
+        <label for="name">Coffee Name:</label>
+        <input type="text" id="name" name="name" required><br>
 
-    <!-- Button to submit the form -->
-    <button type="submit">Add Coffee List</button>
-</form>
+        <label for="type">Type:</label>
+        <input type="text" id="type" name="type" required><br>
 
-<!-- Link to navigate back to the coffee list -->
-<a href="/">Back to List</a>
+        <label for="size">Size:</label>
+        <select name="size" id="size">
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+        </select><br>
+
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" required><br>
+
+        <label for="roastLevel">Roast Level:</label>
+        <input type="text" id="roastLevel" name="roastLevel" required><br>
+
+        <label for="origin">Origin:</label>
+        <input type="text" id="origin" name="origin" required><br>
+
+        <label>Decaffeinated:</label>
+        <input type="radio" name="isDecaf" value="true" id="true">
+        <label for="true">True</label>
+        <input type="radio" name="isDecaf" value="false" id="false">
+        <label for="false">False</label><br>
+
+        <label for="stock">Stock:</label>
+        <input type="number" name="stock" id="stock" min="0" required><br>
+
+        <label for="flavorNotes">Flavor Notes:</label>
+        <input type="text" name="flavorNotes" id="flavorNotes" required><br>
+
+        <label for="brewMethod">Brew Method:</label>
+        <input type="text" name="brewMethod" id="brewMethod" required><br>
+
+        <!-- Buttons -->
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset"><br>
+    </form>
+
+    <!-- Back to List Link -->
+    <a href="/">Back to List</a>
+</div>
 </body>
 </html>

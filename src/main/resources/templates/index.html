@@ -29,12 +29,12 @@
         <td th:text="${coffee.name}"></td>
         <td th:text="${coffee.type}"></td>
         <td th:text="${coffee.size}"></td>
-        <td th:text="${coffee.price}"></td>
+        <td th:text="'Php ' + ${coffee.price}"></td>
         <td th:text="${coffee.roastLevel}"></td>
         <td th:text="${coffee.origin}"></td>
-        <td th:text="${coffee.isDecaf}"></td>
+        <td th:text="${coffee.isDecaf} ? 'Yes' : 'No'"></td>
         <td th:text="${coffee.stock}"></td>
-        <td th:text="${coffee.flavorNotes}"></td>
+        <td th:text="${#strings.replace(#strings.replace(coffee?.flavorNotes, '[', ''), ']', '')}"></td>
         <td th:text="${coffee.brewMethod}"></td>
         <td>
             <a th:href="@{/delete(id=${coffee.id})}" onclick="return confirm('Are you sure?');">Delete</a>

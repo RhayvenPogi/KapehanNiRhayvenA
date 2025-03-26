@@ -5,10 +5,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class HomeController {
@@ -125,5 +127,18 @@ public class HomeController {
             }
         }
         return "redirect:/";
+    }
+
+    @GetMapping("/form")
+    public String showForm() {
+        return "forms/form";
+    }
+
+    @PostMapping("/submit")
+    @ResponseBody
+    public String processForm(@RequestParam Map<String, String> formData) {
+        System.out.println("Form Data Received:");
+        formData.forEach((key, value) -> System.out.println(key + ": " + value));
+        return "Form submitted successfully! Check terminal for output.";
     }
 }

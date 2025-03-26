@@ -8,19 +8,47 @@
 <!-- Form to update a coffee -->
 <form action="" method="post" th:action="${coffee != null} ? '/update' : '/save'">
   <input type="hidden" name="id" th:if="${coffee != null}" th:value="${coffee.id}">
-  <label>Coffee Name: <input type="text" name="name" th:value="${coffee?.name}" required></label><br>
-  <label>Type: <input type="text" name="type" th:value="${coffee?.type}" required></label><br>
-  <label>Size: <input type="text" name="size" th:value="${coffee?.size}" required></label><br>
-  <label>Price: <input type="text" name="price" th:value="${coffee?.price}" required></label><br>
-  <label>Roast Level: <input type="text" name="roastLevel" th:value="${coffee?.roastLevel}" required></label><br>
-  <label>Origin: <input type="text" name="origin" th:value="${coffee?.origin}" required></label><br>
-  <label>Decaffeinated: <input type="checkbox" name="isDecaf" th:checked="${coffee?.isDecaf}" value="true"></label><br>
-  <label>Stock: <input type="number" name="stock" th:value="${coffee?.stock}" required></label><br>
-  <label>Flavor Notes: <input type="text" name="flavorNotes" th:value="${coffee?.flavorNotes}" required></label><br>
-  <label>Brew Method: <input type="text" name="brewMethod" th:value="${coffee?.brewMethod}" required></label><br>
 
-  <!-- Button to submit the form -->
-  <button type="submit" th:text="${coffee != null} ? 'Update Coffee' : 'Add Coffee'"></button>
+  <label for="name">Coffee Name:</label>
+  <input type="text" id="name" name="name" th:value="${coffee?.name}" required><br>
+
+  <label for="type">Type:</label>
+  <input type="text" id="type" name="type" th:value="${coffee?.type}" required><br>
+
+  <label for="size">Size:</label>
+  <select name="size" id="size">
+    <option value="Small" th:selected="${coffee?.size == 'Small'}">Small</option>
+    <option value="Medium" th:selected="${coffee?.size == 'Medium'}">Medium</option>
+    <option value="Large" th:selected="${coffee?.size == 'Large'}">Large</option>
+  </select><br>
+
+  <label for="price">Price:</label>
+  <input type="text" id="price" name="price" th:value="${coffee?.price}" required><br>
+
+  <label for="roastLevel">Roast Level:</label>
+  <input type="text" id="roastLevel" name="roastLevel" th:value="${coffee?.roastLevel}" required><br>
+
+  <label for="origin">Origin:</label>
+  <input type="text" id="origin" name="origin" th:value="${coffee?.origin}" required><br>
+
+  <label>Decaffeinated:</label>
+  <input type="radio" name="isDecaf" value="true" id="true" th:checked="${coffee?.isDecaf}">
+  <label for="true">True</label>
+  <input type="radio" name="isDecaf" value="false" id="false" th:checked="${coffee?.isDecaf == false}">
+  <label for="false">False</label><br>
+
+  <label for="stock">Stock:</label>
+  <input type="number" id="stock" name="stock" min="0" th:value="${coffee?.stock}" required><br>
+
+  <label for="flavorNotes">Flavor Notes:</label>
+  <input type="text" id="flavorNotes" name="flavorNotes" th:value="${#strings.replace(#strings.replace(coffee?.flavorNotes, '[', ''), ']', '')}" required><br>
+
+  <label for="brewMethod">Brew Method:</label>
+  <input type="text" id="brewMethod" name="brewMethod" th:value="${coffee?.brewMethod}" required><br>
+
+  <!-- Buttons -->
+  <input type="submit" th:text="${coffee != null} ? 'Update Coffee' : 'Add Coffee'">
+  <input type="reset" value="Reset"><br>
 </form>
 
 <!-- Link to navigate back to the coffee list -->
