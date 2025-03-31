@@ -2,56 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>New Coffee List</title>
 </head>
 <body>
-<div>
+
+<div id="form-container">
+    <h1>Add New Coffee</h1>
+
     <!-- Form to add a new coffee -->
-    <form action="/save" method="post">
-        <label for="name">Coffee Name:</label>
-        <input type="text" id="name" name="name" required><br>
+    <form action="/save" method="post" id="coffee-form">
 
-        <label for="type">Type:</label>
-        <input type="text" id="type" name="type" required><br>
+        <div id="name-area">
+            <label for="name">Coffee Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
 
-        <label for="size">Size:</label>
-        <select name="size" id="size">
-            <option value="Small">Small</option>
-            <option value="Medium">Medium</option>
-            <option value="Large">Large</option>
-        </select><br>
+        <div id="type-area">
+            <label for="type">Type:</label>
+            <input type="text" id="type" name="type" required>
+        </div>
 
-        <label for="price">Price:</label>
-        <input type="text" id="price" name="price" required><br>
+        <div id="size-area">
+            <label for="size">Size:</label>
+            <select name="size" id="size">
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
+            </select>
+        </div>
 
-        <label for="roastLevel">Roast Level:</label>
-        <input type="text" id="roastLevel" name="roastLevel" required><br>
+        <div id="price-area">
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" required>
+        </div>
 
-        <label for="origin">Origin:</label>
-        <input type="text" id="origin" name="origin" required><br>
+        <div id="roastLevel-area">
+            <label for="roastLevel">Roast Level:</label>
+            <input type="text" id="roastLevel" name="roastLevel" required>
+        </div>
 
-        <label>Decaffeinated:</label>
-        <input type="radio" name="isDecaf" value="true" id="true">
-        <label for="true">True</label>
-        <input type="radio" name="isDecaf" value="false" id="false">
-        <label for="false">False</label><br>
+        <div id="origin-area">
+            <label for="origin">Origin:</label>
+            <input type="text" id="origin" name="origin" required>
+        </div>
 
-        <label for="stock">Stock:</label>
-        <input type="number" name="stock" id="stock" min="0" required><br>
+        <div id="decaf-area">
+            <label>Decaffeinated:</label>
+            <input type="radio" name="isDecaf" value="true" id="true">
+            <label for="true">True</label>
+            <input type="radio" name="isDecaf" value="false" id="false">
+            <label for="false">False</label>
+        </div>
 
-        <label for="flavorNotes">Flavor Notes:</label>
-        <input type="text" name="flavorNotes" id="flavorNotes" required><br>
+        <div id="stock-area">
+            <label for="stock">Stock:</label>
+            <input type="number" name="stock" id="stock" min="0" required>
+        </div>
 
-        <label for="brewMethod">Brew Method:</label>
-        <input type="text" name="brewMethod" id="brewMethod" required><br>
+        <div id="flavorNotes-area">
+            <label for="flavorNotes">Flavor Notes:</label>
+            <input type="text" name="flavorNotes" id="flavorNotes" required>
+        </div>
+
+        <div id="brewMethod-area">
+            <label for="brewMethod">Brew Method:</label>
+            <input type="text" name="brewMethod" id="brewMethod" required>
+        </div>
 
         <!-- Buttons -->
-        <input type="submit" value="Submit">
-        <input type="reset" value="Reset"><br>
+        <div id="form-buttons-area">
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </div>
     </form>
 
     <!-- Back to List Link -->
-    <a href="/">Back to List</a>
+    <div id="back-link-area">
+        <a href="/">Back to List</a>
+    </div>
 </div>
+
 </body>
 </html>

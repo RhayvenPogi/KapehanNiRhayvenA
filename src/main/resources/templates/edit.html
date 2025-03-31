@@ -1,57 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Coffee Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Edit [[${coffee.name}]]</title>
 </head>
 <body>
+
+<h1 th:text="'Edit ' + ${coffee.name}"></h1>
+
 <!-- Form to update a coffee -->
-<form action="" method="post" th:action="${coffee != null} ? '/update' : '/save'">
+<form action="/update" method="post" th:action="${coffee != null} ? '/update' : '/save'">
+
   <input type="hidden" name="id" th:if="${coffee != null}" th:value="${coffee.id}">
 
-  <label for="name">Coffee Name:</label>
-  <input type="text" id="name" name="name" th:value="${coffee?.name}" required><br>
+  <div id="name-area">
+    <label for="name">Coffee Name:</label>
+    <input type="text" id="name" name="name" th:value="${coffee?.name}" required>
+  </div>
 
-  <label for="type">Type:</label>
-  <input type="text" id="type" name="type" th:value="${coffee?.type}" required><br>
+  <div id="type-area">
+    <label for="type">Type:</label>
+    <input type="text" id="type" name="type" th:value="${coffee?.type}" required>
+  </div>
 
-  <label for="size">Size:</label>
-  <select name="size" id="size">
-    <option value="Small" th:selected="${coffee?.size == 'Small'}">Small</option>
-    <option value="Medium" th:selected="${coffee?.size == 'Medium'}">Medium</option>
-    <option value="Large" th:selected="${coffee?.size == 'Large'}">Large</option>
-  </select><br>
+  <div id="size-area">
+    <label for="size">Size:</label>
+    <select name="size" id="size">
+      <option value="Small" th:selected="${coffee?.size == 'Small'}">Small</option>
+      <option value="Medium" th:selected="${coffee?.size == 'Medium'}">Medium</option>
+      <option value="Large" th:selected="${coffee?.size == 'Large'}">Large</option>
+    </select>
+  </div>
 
-  <label for="price">Price:</label>
-  <input type="text" id="price" name="price" th:value="${coffee?.price}" required><br>
+  <div id="price-area">
+    <label for="price">Price:</label>
+    <input type="text" id="price" name="price" th:value="${coffee?.price}" required>
+  </div>
 
-  <label for="roastLevel">Roast Level:</label>
-  <input type="text" id="roastLevel" name="roastLevel" th:value="${coffee?.roastLevel}" required><br>
+  <div id="roastLevel-area">
+    <label for="roastLevel">Roast Level:</label>
+    <input type="text" id="roastLevel" name="roastLevel" th:value="${coffee?.roastLevel}" required>
+  </div>
 
-  <label for="origin">Origin:</label>
-  <input type="text" id="origin" name="origin" th:value="${coffee?.origin}" required><br>
+  <div id="origin-area">
+    <label for="origin">Origin:</label>
+    <input type="text" id="origin" name="origin" th:value="${coffee?.origin}" required>
+  </div>
 
-  <label>Decaffeinated:</label>
-  <input type="radio" name="isDecaf" value="true" id="true" th:checked="${coffee?.isDecaf}">
-  <label for="true">True</label>
-  <input type="radio" name="isDecaf" value="false" id="false" th:checked="${coffee?.isDecaf == false}">
-  <label for="false">False</label><br>
+  <div id="decaf-area">
+    <label>Decaffeinated:</label>
+    <input type="radio" name="isDecaf" value="true" id="true" th:checked="${coffee?.isDecaf}">
+    <label for="true">True</label>
+    <input type="radio" name="isDecaf" value="false" id="false" th:checked="${coffee?.isDecaf == false}">
+    <label for="false">False</label>
+  </div>
 
-  <label for="stock">Stock:</label>
-  <input type="number" id="stock" name="stock" min="0" th:value="${coffee?.stock}" required><br>
+  <div id="stock-area">
+    <label for="stock">Stock:</label>
+    <input type="number" id="stock" name="stock" min="0" th:value="${coffee?.stock}" required>
+  </div>
 
-  <label for="flavorNotes">Flavor Notes:</label>
-  <input type="text" id="flavorNotes" name="flavorNotes" th:value="${#strings.replace(#strings.replace(coffee?.flavorNotes, '[', ''), ']', '')}" required><br>
+  <div id="flavorNotes-area">
+    <label for="flavorNotes">Flavor Notes:</label>
+    <input type="text" id="flavorNotes" name="flavorNotes"
+           th:value="${#strings.replace(#strings.replace(coffee?.flavorNotes, '[', ''), ']', '')}" required>
+  </div>
 
-  <label for="brewMethod">Brew Method:</label>
-  <input type="text" id="brewMethod" name="brewMethod" th:value="${coffee?.brewMethod}" required><br>
+  <div id="brewMethod-area">
+    <label for="brewMethod">Brew Method:</label>
+    <input type="text" id="brewMethod" name="brewMethod" th:value="${coffee?.brewMethod}" required>
+  </div>
 
   <!-- Buttons -->
-  <input type="submit" th:text="${coffee != null} ? 'Update Coffee' : 'Add Coffee'">
-  <input type="reset" value="Reset"><br>
+  <div id="form-buttons-area">
+    <input type="submit" th:value="'Update Coffee'">
+    <input type="reset" value="Reset">
+  </div>
+
 </form>
 
 <!-- Link to navigate back to the coffee list -->
-<a href="/">Back to List</a>
+<div id="back-link-area">
+  <a href="/">Back to List</a>
+</div>
+
 </body>
 </html>

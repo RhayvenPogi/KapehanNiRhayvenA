@@ -1,13 +1,28 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width", initial-scale="1">
     <title>Coffee List</title>
+    <link rel="stylesheet" th:href="@{/css/styleIndex.css}">
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
 <h1>Available Coffees</h1>
 
-<!-- Table displaying coffee details -->
+<!-- Search Form -->
+<form>
+    <input type="text" name="search" placeholder="Search...">
+    <button type="submit">Search</button>
+</form>
+
+<!-- Coffee Table -->
 <table border="1">
+    <thead>
     <tr>
         <th>ID</th>
         <th>Coffee Name</th>
@@ -22,10 +37,11 @@
         <th>Brew Method</th>
         <th>Actions</th>
     </tr>
-
+    </thead>
+    <tbody>
     <!-- Loop through coffee list and display each coffee's attributes -->
-    <tr th:each="coffee: ${coffees}">
-        <td th:text="${coffee.id}"></td>
+    <tr th:each="coffee, stat : ${coffeeList}">
+        <td>[[${stat.count}]]</td>
         <td th:text="${coffee.name}"></td>
         <td th:text="${coffee.type}"></td>
         <td th:text="${coffee.size}"></td>
@@ -36,14 +52,15 @@
         <td th:text="${coffee.stock}"></td>
         <td th:text="${#strings.replace(#strings.replace(coffee?.flavorNotes, '[', ''), ']', '')}"></td>
         <td th:text="${coffee.brewMethod}"></td>
-        <td>
-            <a th:href="@{/delete(id=${coffee.id})}" onclick="return confirm('Are you sure?');">Delete</a>
+        <td class="action-links">
             <a th:href="@{/edit(id=${coffee.id})}">Edit</a>
+            <a th:href="@{/delete(id=${coffee.id})}" onclick="return confirm('Are you sure?');">Delete</a>
         </td>
     </tr>
+    </tbody>
 </table>
 
-<!-- Link to add a new coffee -->
+<!-- Link to Add New Coffee -->
 <a href="/add">Add New Coffee</a>
 </body>
 </html>

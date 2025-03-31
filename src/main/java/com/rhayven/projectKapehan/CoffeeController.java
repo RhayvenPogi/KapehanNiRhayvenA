@@ -5,26 +5,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+
 
 @Controller
-public class HomeController {
-    private List<Coffee> coffeeList = new ArrayList<>();
+public class CoffeeController {
+    CoffeeService coffeeService;
 
     /**
      * Initializes the coffee list with sample data.
      */
-    public HomeController() {
-        coffeeList.add(new Coffee(1, "Espresso", "Arabica", "Small", 3.50, "Dark", "Ethiopia", false, 10, Arrays.asList("Chocolate", "Nutty"), "Espresso"));
-        coffeeList.add(new Coffee(2, "Latte", "Arabica", "Medium", 4.50, "Medium", "Brazil", false, 8, Arrays.asList("Creamy", "Sweet"), "Drip"));
-        coffeeList.add(new Coffee(3, "Cappuccino", "Robusta", "Large", 5.00, "Medium", "Colombia", false, 12, Arrays.asList("Fruity", "Bold"), "French Press"));
-        coffeeList.add(new Coffee(4, "Mocha", "Arabica", "Medium", 4.75, "Dark", "Guatemala", false, 6, Arrays.asList("Chocolate", "Smooth"), "Espresso"));
-        coffeeList.add(new Coffee(5, "Americano", "Robusta", "Large", 3.25, "Light", "Kenya", false, 15, Arrays.asList("Citrus", "Balanced"), "Drip"));
+    public CoffeeController() {
+        coffeeService = new CoffeeService();
+
+
     }
 
     /**
@@ -33,8 +28,8 @@ public class HomeController {
      * @return View name for coffee list.
      */
     @GetMapping("/")
-    public String getCoffees(Model model) {
-        model.addAttribute("coffees", coffeeList);
+    public String index(@RequestParam(defaultValue = "") String search, Model model) {
+        model.addAttribute("coffeeList", coffeeService.searchCoffee(search));
         return "index";
     }
 
@@ -45,7 +40,7 @@ public class HomeController {
      */
     @GetMapping("/delete")
     public String deleteCoffee(@RequestParam int id) {
-        coffeeList.removeIf(coffee -> coffee.getId() == id);
+        coffeeService.deleteCoffee(id);
         return "redirect:/";
     }
 
@@ -63,7 +58,7 @@ public class HomeController {
      * @return Redirects to coffee list.
      */
     @PostMapping("/save")
-    public String saveCoffee(@RequestParam String name,
+    public String storeSave(@RequestParam String name,
                              @RequestParam String type,
                              @RequestParam String size,
                              @RequestParam double price,
@@ -73,8 +68,8 @@ public class HomeController {
                              @RequestParam int stock,
                              @RequestParam List<String> flavorNotes,
                              @RequestParam String brewMethod) {
-        int newId = coffeeList.isEmpty() ? 1 : coffeeList.get(coffeeList.size() - 1).getId() + 1;  // Handle empty list scenario
-        coffeeList.add(new Coffee(newId, name, type, size, price, roastLevel, origin, isDecaf, stock, flavorNotes, brewMethod));
+        Coffee coffee = new Coffee(coffeeService.getLastId() + 1, name, type, size, price, roastLevel, origin, isDecaf, stock, flavorNotes, brewMethod);
+        coffeeService.addCoffee(coffee);
         return "redirect:/";
     }
 
@@ -86,11 +81,10 @@ public class HomeController {
      */
     @GetMapping("/edit")
     public String editCoffee(@RequestParam int id, Model model) {
-        for (Coffee coffee : coffeeList) {
-            if (coffee.getId() == id) {
-                model.addAttribute("coffee", coffee);
-                return "edit";
-            }
+        Coffee coffee = coffeeService.getCoffee(id);
+        if (coffee != null) {
+            model.addAttribute("coffee", coffee);
+            return "edit";
         }
         return "redirect:/";
     }
@@ -100,7 +94,7 @@ public class HomeController {
      * @return Redirects to coffee list.
      */
     @PostMapping("/update")
-    public String updateCoffee(@RequestParam int id,
+    public String storeUpdate(@RequestParam int id,
                                @RequestParam String name,
                                @RequestParam String type,
                                @RequestParam String size,
@@ -111,34 +105,22 @@ public class HomeController {
                                @RequestParam int stock,
                                @RequestParam List<String> flavorNotes,
                                @RequestParam String brewMethod) {
-        for (Coffee coffee : coffeeList) {
-            if (coffee.getId() == id) {
-                coffee.setName(name);
-                coffee.setType(type);
-                coffee.setSize(size);
-                coffee.setPrice(price);
-                coffee.setRoastLevel(roastLevel);
-                coffee.setOrigin(origin);
-                coffee.setDecaf(isDecaf);
-                coffee.setStock(stock);
-                coffee.setFlavorNotes(flavorNotes);
-                coffee.setBrewMethod(brewMethod);
-                break;
-            }
+        Coffee coffee = coffeeService.getCoffee(id);
+        if (coffee != null) {
+            coffee.setName(name);
+            coffee.setType(type);
+            coffee.setSize(size);
+            coffee.setPrice(price);
+            coffee.setRoastLevel(roastLevel);
+            coffee.setOrigin(origin);
+            coffee.setDecaf(isDecaf);
+            coffee.setStock(stock);
+            coffee.setFlavorNotes(flavorNotes);
+            coffee.setBrewMethod(brewMethod);
+
+            coffeeService.updateCoffee(id, coffee);
         }
         return "redirect:/";
     }
 
-    @GetMapping("/form")
-    public String showForm() {
-        return "forms/form";
-    }
-
-    @PostMapping("/submit")
-    @ResponseBody
-    public String processForm(@RequestParam Map<String, String> formData) {
-        System.out.println("Form Data Received:");
-        formData.forEach((key, value) -> System.out.println(key + ": " + value));
-        return "Form submitted successfully! Check terminal for output.";
-    }
 }
