@@ -23,9 +23,10 @@ public class CoffeeController {
     }
 
     /**
-     * Displays the list of coffees.
-     * @param model Model to add coffee list attribute.
-     * @return View name for coffee list.
+     * Displays the list of coffees with optional search functionality.
+     * @param search The search keyword to filter coffee records.
+     * @param model Model to add the coffee list attribute.
+     * @return The view name for the coffee list page.
      */
     @GetMapping("/")
     public String index(@RequestParam(defaultValue = "") String search, Model model) {

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Edit [[${coffee.name}]]</title>
+  <link rel="stylesheet" th:href="@{/css/styleEdit.css}">
 </head>
 <body>
 
@@ -49,7 +50,7 @@
   </div>
 
   <div id="decaf-area">
-    <label>Decaffeinated:</label>
+    <label id="decaf-label">Decaffeinated:</label>
     <input type="radio" name="isDecaf" value="true" id="true" th:checked="${coffee?.isDecaf}">
     <label for="true">True</label>
     <input type="radio" name="isDecaf" value="false" id="false" th:checked="${coffee?.isDecaf == false}">
@@ -78,12 +79,12 @@
     <input type="reset" value="Reset">
   </div>
 
-</form>
+  <!-- Link to navigate back to the coffee list -->
+  <div id="back-link-area">
+    <a href="/">Back to List</a>
+  </div>
 
-<!-- Link to navigate back to the coffee list -->
-<div id="back-link-area">
-  <a href="/">Back to List</a>
-</div>
+</form>
 
 </body>
 </html>

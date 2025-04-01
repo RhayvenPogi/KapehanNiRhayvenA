@@ -1,0 +1,127 @@
+:root {
+    --font-family: Arial, sans-serif;
+    --bg-color: whitesmoke;
+    --text-color: #3F4F44;
+    --accent-color: #DCD7C9;
+    --button-bg: #3F4F44;
+    --button-hover-bg: #2C3930;
+    --shadow-color: #2C3930;
+    --border-color: #ccc;
+}
+
+/* General body styles */
+body {
+    background-color: var(--bg-color);
+    font-family: var(--font-family);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 50px;
+}
+
+/* Heading styles */
+h1 {
+    color: var(--text-color);
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Form container */
+form {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 10px var(--shadow-color);
+    border-radius: 10px;
+    width: 70%;
+    max-width: 600px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Labels */
+form label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-color);
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Input fields */
+form input[type="text"],
+form input[type="number"],
+form select {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+
+/* Radio buttons */
+form input[type="radio"] {
+    width: auto;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Decaf option */
+form #decaf-area {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+form #decaf-area label {
+    margin-right: 10px;
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+form #decaf-area input[type="radio"] {
+    margin-right: 5px;
+    margin-left: 10px;
+    margin-bottom: 7px;
+}
+
+/* Buttons */
+form input[type="submit"],
+form input[type="reset"] {
+    padding: 10px 15px;
+    margin: 10px 5px;
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 47%;
+}
+
+/* Back link */
+#back-link-area {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#back-link-area a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 150px;
+    background-color: var(--button-bg);
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    width: 50%;
+}
+
+/* Hover effects */
+form input[type="submit"]:hover,
+form input[type="reset"]:hover,
+#back-link-area a:hover {
+    background-color: var(--button-hover-bg);
+}

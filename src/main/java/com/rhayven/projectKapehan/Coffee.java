@@ -22,18 +22,18 @@ public class Coffee {
     }
 
     /**
-     * Constructor to initialize coffee properties.
-     * @param id Coffee ID.
-     * @param name Coffee name.
-     * @param type Coffee type (e.g., Arabica, Robusta).
-     * @param size Coffee size (e.g., Small, Medium, Large).
-     * @param price Coffee price.
-     * @param roastLevel Roast level (e.g., Light, Medium, Dark).
-     * @param origin Coffee origin country.
-     * @param isDecaf Whether the coffee is decaffeinated.
-     * @param stock Available stock quantity.
-     * @param flavorNotes List of flavor notes.
-     * @param brewMethod Recommended brewing method.
+     * Constructs a Coffee object with specified properties.
+     * @param id The unique identifier of the coffee (int).
+     * @param name The name of the coffee (String).
+     * @param type The type of coffee, e.g., Arabica, Robusta (String).
+     * @param size The size of the coffee, e.g., Small, Medium, Large (String).
+     * @param price The price of the coffee (double).
+     * @param roastLevel The roast level, e.g., Light, Medium, Dark (String).
+     * @param origin The origin country of the coffee beans (String).
+     * @param isDecaf Indicates whether the coffee is decaffeinated (boolean).
+     * @param stock The available stock quantity (int).
+     * @param flavorNotes A list of flavor notes describing the coffee’s taste (List<String>).
+     * @param brewMethod The recommended brewing method, e.g., French press, pour-over (String).
      */
     public Coffee(int id, String name, String type, String size, double price, String roastLevel, String origin, boolean isDecaf, int stock, List<String> flavorNotes, String brewMethod) {
         this.id = id;

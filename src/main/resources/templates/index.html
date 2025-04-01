@@ -15,6 +15,7 @@
 <h1>Available Coffees</h1>
 
 <!-- Search Form -->
+<div>
 <form>
     <input type="text" name="search" placeholder="Search...">
     <button type="submit">Search</button>
@@ -53,14 +54,15 @@
         <td th:text="${#strings.replace(#strings.replace(coffee?.flavorNotes, '[', ''), ']', '')}"></td>
         <td th:text="${coffee.brewMethod}"></td>
         <td class="action-links">
-            <a th:href="@{/edit(id=${coffee.id})}">Edit</a>
-            <a th:href="@{/delete(id=${coffee.id})}" onclick="return confirm('Are you sure?');">Delete</a>
+            <a class="edit-btn" th:href="@{/edit(id=${coffee.id})}">Edit</a>
+            <a class="delete-btn" th:href="@{/delete(id=${coffee.id})}" onclick="return confirm('Are you sure?');">Delete</a>
         </td>
     </tr>
     </tbody>
 </table>
 
 <!-- Link to Add New Coffee -->
-<a href="/add">Add New Coffee</a>
+<a class="add-btn" href="/add">Add New Coffee</a>
+</div>
 </body>
 </html>

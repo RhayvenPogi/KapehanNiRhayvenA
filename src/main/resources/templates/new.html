@@ -4,84 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>New Coffee List</title>
+    <link rel="stylesheet" th:href="@{/css/styleAdd.css}">
 </head>
 <body>
+<h1>Add New Coffee</h1>
 
-<div id="form-container">
-    <h1>Add New Coffee</h1>
+<!-- Form to add a new coffee -->
+<form action="/save" method="post" id="coffee-form">
 
-    <!-- Form to add a new coffee -->
-    <form action="/save" method="post" id="coffee-form">
+    <div id="name-area">
+        <label for="name">Coffee Name:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
 
-        <div id="name-area">
-            <label for="name">Coffee Name:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
+    <div id="type-area">
+        <label for="type">Type:</label>
+        <input type="text" id="type" name="type" required>
+    </div>
 
-        <div id="type-area">
-            <label for="type">Type:</label>
-            <input type="text" id="type" name="type" required>
-        </div>
+    <div id="size-area">
+        <label for="size">Size:</label>
+        <select name="size" id="size">
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+        </select>
+    </div>
 
-        <div id="size-area">
-            <label for="size">Size:</label>
-            <select name="size" id="size">
-                <option value="Small">Small</option>
-                <option value="Medium">Medium</option>
-                <option value="Large">Large</option>
-            </select>
-        </div>
+    <div id="price-area">
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" required>
+    </div>
 
-        <div id="price-area">
-            <label for="price">Price:</label>
-            <input type="text" id="price" name="price" required>
-        </div>
+    <div id="roastLevel-area">
+        <label for="roastLevel">Roast Level:</label>
+        <input type="text" id="roastLevel" name="roastLevel" required>
+    </div>
 
-        <div id="roastLevel-area">
-            <label for="roastLevel">Roast Level:</label>
-            <input type="text" id="roastLevel" name="roastLevel" required>
-        </div>
+    <div id="origin-area">
+        <label for="origin">Origin:</label>
+        <input type="text" id="origin" name="origin" required>
+    </div>
 
-        <div id="origin-area">
-            <label for="origin">Origin:</label>
-            <input type="text" id="origin" name="origin" required>
-        </div>
+    <div id="decaf-area">
+        <label>Decaffeinated:</label>
+        <input type="radio" name="isDecaf" value="true" id="true">
+        <label for="true">True</label>
+        <input type="radio" name="isDecaf" value="false" id="false">
+        <label for="false">False</label>
+    </div>
 
-        <div id="decaf-area">
-            <label>Decaffeinated:</label>
-            <input type="radio" name="isDecaf" value="true" id="true">
-            <label for="true">True</label>
-            <input type="radio" name="isDecaf" value="false" id="false">
-            <label for="false">False</label>
-        </div>
+    <div id="stock-area">
+        <label for="stock">Stock:</label>
+        <input type="number" name="stock" id="stock" min="0" required>
+    </div>
 
-        <div id="stock-area">
-            <label for="stock">Stock:</label>
-            <input type="number" name="stock" id="stock" min="0" required>
-        </div>
+    <div id="flavorNotes-area">
+        <label for="flavorNotes">Flavor Notes:</label>
+        <input type="text" name="flavorNotes" id="flavorNotes" required>
+    </div>
 
-        <div id="flavorNotes-area">
-            <label for="flavorNotes">Flavor Notes:</label>
-            <input type="text" name="flavorNotes" id="flavorNotes" required>
-        </div>
+    <div id="brewMethod-area">
+        <label for="brewMethod">Brew Method:</label>
+        <input type="text" name="brewMethod" id="brewMethod" required>
+    </div>
 
-        <div id="brewMethod-area">
-            <label for="brewMethod">Brew Method:</label>
-            <input type="text" name="brewMethod" id="brewMethod" required>
-        </div>
-
-        <!-- Buttons -->
-        <div id="form-buttons-area">
-            <input type="submit" value="Submit">
-            <input type="reset" value="Reset">
-        </div>
-    </form>
+    <!-- Buttons -->
+    <div id="form-buttons-area">
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </div>
 
     <!-- Back to List Link -->
     <div id="back-link-area">
         <a href="/">Back to List</a>
     </div>
-</div>
+</form>
 
 </body>
 </html>

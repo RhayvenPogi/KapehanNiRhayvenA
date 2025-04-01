@@ -6,19 +6,34 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Service class for managing coffee records.
+ * Handles CRUD operations and file persistence.
+ */
 public class CoffeeService {
     private ArrayList<Coffee> coffeeList;
     private final String FILE_NAME = "database.csv";
 
+    /**
+     * Constructor initializes the coffee list and loads data from disk.
+     */
     public CoffeeService(){
         coffeeList = new ArrayList<>();
         readFromDisk();
     }
 
+    /**
+     * Retrieves all coffee records.
+     * @return List of all Coffee objects.
+     */
     public ArrayList<Coffee> getCoffees() {
         return coffeeList;
     }
 
+    /**
+     * Deletes a coffee record by ID and updates the IDs of remaining records.
+     * @param id The ID of the coffee to be deleted.
+     */
     public void deleteCoffee(int id){
         coffeeList.removeIf(coffee -> coffee.getId() == id);
         for (int i = 0; i < coffeeList.size(); i++) {
@@ -27,6 +42,11 @@ public class CoffeeService {
         writeToDisk();
     }
 
+    /**
+     * Searches for coffee records matching the given keyword.
+     * @param keyword The search keyword.
+     * @return List of Coffee objects that match the search criteria.
+     */
     public List<Coffee> searchCoffee(String keyword){
         if(keyword.trim().isEmpty()){
             return coffeeList;
@@ -46,15 +66,24 @@ public class CoffeeService {
                 ).collect(Collectors.toList());
     }
 
+    /**
+     * Retrieves a coffee record by ID.
+     * @param id The ID of the coffee.
+     * @return The Coffee object if found, otherwise null.
+     */
     public Coffee getCoffee(int id){
         for(Coffee coffee: coffeeList){
             if(coffee.getId() == id)
                 return coffee;
         }
-
         return null;
     }
 
+    /**
+     * Updates an existing coffee record.
+     * @param id The ID of the coffee to be updated.
+     * @param update The new Coffee object.
+     */
     public void updateCoffee(int id, Coffee update){
         for(int i = 0; i < coffeeList.size(); i++){
             if(coffeeList.get(i).getId() == id){
@@ -63,14 +92,21 @@ public class CoffeeService {
                 break;
             }
         }
-
     }
 
+    /**
+     * Adds a new coffee record.
+     * @param coffee The Coffee object to be added.
+     */
     public void addCoffee(Coffee coffee){
         coffeeList.add(coffee);
         writeToDisk();
     }
 
+    /**
+     * Gets the last ID in the coffee list.
+     * @return The last coffee ID, or 0 if the list is empty.
+     */
     public int getLastId(){
         if(coffeeList.isEmpty()){
             return 0;
@@ -79,7 +115,7 @@ public class CoffeeService {
     }
 
     /**
-     * This saves the coffeeList ArrayList into a CSV file.
+     * Saves the coffee list to a CSV file.
      */
     public void writeToDisk(){
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME))){
@@ -104,7 +140,7 @@ public class CoffeeService {
     }
 
     /**
-     * This reads the CSV file and loads it to the coffeeList ArrayList.
+     * Reads coffee records from a CSV file and loads them into the coffee list.
      */
     public void readFromDisk(){
         File file = new File(FILE_NAME);

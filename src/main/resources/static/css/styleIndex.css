@@ -1,3 +1,138 @@
-body{
-    background-color: black;
+:root {
+    --font-family: "Arial", sans-serif;
+    --bg-color: whitesmoke;
+    --text-color: #3F4F44;
+    --accent-color: #DCD7C9;
+    --button-bg: #A27B5C;
+    --button-hover-bg: #8a6346;
+    --shadow-color: #3F4F44;
+    --border-color: #ccc;
+    --danger-bg: #b81404;
+    --danger-hover-bg: #7c0e04;
+    --action-bg: #3F4F44;
+    --action-hover-bg: #2C3930;
+}
+
+/* General body styles */
+body {
+    background-color: var(--bg-color);
+    font-family: var(--font-family);
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Heading */
+h1 {
+    color: var(--text-color);
+    padding-left: 20px;
+    font-weight: bolder;
+}
+
+/* Main container */
+div {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 10px 5px var(--shadow-color);
+    border-radius: 10px;
+    width: 70%;
+    padding: 20px;
+    margin: 0 auto 30px;
+    text-align: center;
+}
+
+/* Input field */
+form input[type="text"] {
+    padding: 8px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+
+/* Buttons */
+form button {
+    padding: 8px 12px;
+    background-color: var(--button-bg);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    border: 2px var(--action-hover-bg);
+}
+
+form button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 8px;
+    border: 1px solid var(--text-color);
+    text-align: center;
+    word-wrap: break-word;
+}
+
+table th {
+    background-color: var(--button-bg);
+    color: white;
+}
+
+/* Action links */
+.action-links a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 6px;
+    padding: 4px 6px;
+    font-size: 14px;
+    display: block;
+}
+
+/* Buttons for actions */
+.edit-btn, .delete-btn {
+    margin: 6px 0;
+    font-size: 14px;
+    border-radius: 5px;
+    display: block;
+}
+
+.edit-btn {
+    background-color: var(--action-bg);
+}
+
+.edit-btn:hover {
+    background-color: var(--action-hover-bg);
+}
+
+.delete-btn {
+    background-color: var(--danger-bg);
+}
+
+.delete-btn:hover {
+    background-color: var(--danger-hover-bg);
+}
+
+/* Add button */
+.add-btn {
+    padding: 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    display: block;
+    background-color: var(--action-bg);
+    width: auto;
+    max-width: 950px;
+    text-align: center;
+    margin: 6px auto;
+}
+
+.add-btn:hover {
+    background-color: var(--action-hover-bg);
 }
