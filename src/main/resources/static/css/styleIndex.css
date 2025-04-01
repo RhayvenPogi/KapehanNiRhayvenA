@@ -13,7 +13,6 @@
     --action-hover-bg: #2C3930;
 }
 
-/* General body styles */
 body {
     background-color: var(--bg-color);
     font-family: var(--font-family);
@@ -22,30 +21,32 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 10px;
 }
 
-/* Heading */
 h1 {
     color: var(--text-color);
-    padding-left: 20px;
     font-weight: bolder;
+    text-align: center;
 }
 
-/* Main container */
 div {
     background-color: var(--accent-color);
     box-shadow: 0 0 10px 5px var(--shadow-color);
     border-radius: 10px;
-    width: 70%;
+    width: 90%;
+    max-width: 1200px;
     padding: 20px;
     margin: 0 auto 30px;
     text-align: center;
+    overflow-x: auto;
 }
 
 /* Input field */
 form input[type="text"] {
     padding: 8px;
-    width: 200px;
+    width: 100%;
+    max-width: 300px;
     border-radius: 5px;
     border: 1px solid var(--border-color);
 }
@@ -58,18 +59,24 @@ form button {
     border-radius: 5px;
     cursor: pointer;
     margin-left: 10px;
-    border: 2px var(--action-hover-bg);
+    border: 2px solid var(--action-hover-bg);
 }
 
 form button:hover {
     background-color: var(--button-hover-bg);
 }
 
-/* Table */
+/* Responsive Table */
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    min-width: 600px;
 }
 
 table th, table td {
@@ -94,7 +101,6 @@ table th {
     display: block;
 }
 
-/* Buttons for actions */
 .edit-btn, .delete-btn {
     margin: 6px 0;
     font-size: 14px;
@@ -135,4 +141,25 @@ table th {
 
 .add-btn:hover {
     background-color: var(--action-hover-bg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    div {
+        width: 95%;
+        padding: 15px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    .action-links a {
+        font-size: 12px;
+    }
+
+    .add-btn {
+        font-size: 12px;
+        padding: 10px;
+    }
 }
