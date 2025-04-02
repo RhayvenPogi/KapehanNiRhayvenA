@@ -5,19 +5,17 @@
     <meta name="viewport" content="width-device-width", initial-scale="1">
     <title>Coffee List</title>
     <link rel="stylesheet" th:href="@{/css/styleIndex.css}">
-    <style>
-        table{
-            border-collapse: collapse;
-        }
-    </style>
 </head>
 <body>
 <h1>Available Coffees</h1>
 
-<!-- Search Form -->
-<div>
+
+<div class="table-container">
+<!-- Search Bar-->
 <form>
-    <input type="text" name="search" placeholder="Search...">
+    <label>
+        <input type="text" name="search" placeholder="Search...">
+    </label>
     <button type="submit">Search</button>
 </form>
 

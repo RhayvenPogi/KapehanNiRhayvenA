@@ -1,6 +1,7 @@
 1,Cappuccino,Robusta,Medium,3.25,Dark,Ethiopia,true,5,Fruity|Bold,Espresso
 2,Mocha,Robusta,Small,3.25,Medium,Guatemala,false,2,Chocolate|Nutty|Sweet,Espresso
-3,Cappuccino,Robusta,Small,4.5,Medium,Guatemala,false,2,Creamy|Sweet,Drip
-4,Latte,Arabica,Medium,3.75,Light,Brazil,true,3,Vanilla|Smooth,Espresso
-5,Americano,Arabica,Large,2.5,Medium,Colombia,true,3,Strong|Nutty,Espresso
-6,Flat White,Robusta,Small,3.0,Medium,Kenya,false,4,Rich|Creamy,Espresso
+3,Americano,Arabica,Large,2.5,Medium,Colombia,true,3,Strong|Nutty,Espresso
+4,Flat White,Robusta,Small,3.0,Medium,Kenya,false,4,Rich|Creamy,Drip
+5,Barako,Robusta,Large,68.0,Dark,La Union,true,5,earthy|herbal|flavors,French Press
+6,Mocha,Arabica,Small,3.25,Dark,Colombia,false,5,Sweet|Hard,Espresso
+7,Latte,Robusta,Small,68.0,Dark,Brazil,false,18,vanilla|caramel,Espresso

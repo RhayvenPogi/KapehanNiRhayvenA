@@ -3,7 +3,7 @@ package com.rhayven.projectKapehan;
 import java.util.List;
 
 public class Coffee {
-    //instance vars, non-static
+    //instance vars
     private int id;
     private String name;
     private String type;

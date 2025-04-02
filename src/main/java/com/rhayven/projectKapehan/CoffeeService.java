@@ -111,7 +111,7 @@ public class CoffeeService {
         if(coffeeList.isEmpty()){
             return 0;
         }
-        return coffeeList.get(coffeeList.size()-1).getId();
+        return coffeeList.getLast().getId();
     }
 
     /**
@@ -153,7 +153,7 @@ public class CoffeeService {
             String line;
             while((line = br.readLine()) != null){
                 String[] data = line.split(",");
-                if (data.length < 11) continue;
+                //if (data.length < 11) continue;
 
                 Coffee coffee = new Coffee();
                 coffee.setId(Integer.parseInt(data[0]));
