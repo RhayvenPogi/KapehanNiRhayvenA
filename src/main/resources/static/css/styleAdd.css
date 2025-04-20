@@ -34,6 +34,7 @@ form {
     box-shadow: 0 0 10px var(--shadow-color);
     border-radius: 10px;
     width: 90%;
+    max-width: 800px;
     padding: 20px;
     text-align: center;
 }
@@ -47,49 +48,61 @@ form label {
     font-weight: bold;
 }
 
-/* Input fields */
+/* Input and Select Fields */
 form input[type="text"],
 form input[type="number"],
 form select {
     width: 100%;
     padding: 8px;
-    margin: 10px 0;
+    margin: 10px 0 20px;
     border-radius: 5px;
     border: 1px solid var(--border-color);
+    box-sizing: border-box;
 }
 
-/* Radio buttons */
-form input[type="radio"] {
-    width: auto;
-    display: inline-block;
-    margin-right: 10px;
-    vertical-align: middle;
+/* Error input styles */
+input[type="text"].error, input[type="number"].error,
+select.error {
+    border-color: red;
+    background-color: #ffe6e6;
+}
+
+/* Flavor notes checkboxes */
+#flavorNotes-area div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+#flavorNotes-area label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: normal;
 }
 
 /* Decaf option */
-form #decaf-area {
+#decaf-area {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-    margin-bottom: 15px;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-form #decaf-area label {
-    margin-right: 10px;
-    display: inline-block;
-    text-align: left;
-    vertical-align: middle;
-}
-
-form #decaf-area input[type="radio"] {
+#decaf-area input[type="checkbox"] {
     margin-right: 5px;
-    margin-left: 10px;
-    margin-bottom: 7px;
+}
+
+/* Error messages */
+.error {
+    color: red;
+
 }
 
 /* Buttons */
-form input[type="submit"],
-form input[type="reset"] {
+form button {
     padding: 10px 15px;
     margin: 10px 5px;
     background-color: var(--button-bg);
@@ -98,6 +111,10 @@ form input[type="reset"] {
     border-radius: 5px;
     cursor: pointer;
     width: 47%;
+}
+
+form button:hover {
+    background-color: var(--button-hover-bg);
 }
 
 /* Back link */
@@ -118,9 +135,6 @@ form input[type="reset"] {
     width: 94%;
 }
 
-/* Hover effects */
-form input[type="submit"]:hover,
-form input[type="reset"]:hover,
 #back-link-area a:hover {
     background-color: var(--button-hover-bg);
 }

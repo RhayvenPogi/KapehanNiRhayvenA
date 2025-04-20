@@ -2,65 +2,75 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width-device-width", initial-scale="1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coffee List</title>
     <link rel="stylesheet" th:href="@{/css/styleIndex.css}">
 </head>
 <body>
-<h1>Available Coffees</h1>
 
-
-<div class="table-container">
-<!-- Search Bar-->
-<form>
-    <label>
-        <input type="text" name="search" placeholder="Search...">
-    </label>
-    <button type="submit">Search</button>
-</form>
-
-<!-- Coffee Table -->
-<table border="1">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Coffee Name</th>
-        <th>Type</th>
-        <th>Size</th>
-        <th>Price</th>
-        <th>Roast Level</th>
-        <th>Origin</th>
-        <th>Decaffeinated</th>
-        <th>Stock</th>
-        <th>Flavor Notes</th>
-        <th>Brew Method</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- Loop through coffee list and display each coffee's attributes -->
-    <tr th:each="coffee, stat : ${coffeeList}">
-        <td>[[${stat.count}]]</td>
-        <td th:text="${coffee.name}"></td>
-        <td th:text="${coffee.type}"></td>
-        <td th:text="${coffee.size}"></td>
-        <td th:text="'Php ' + ${coffee.price}"></td>
-        <td th:text="${coffee.roastLevel}"></td>
-        <td th:text="${coffee.origin}"></td>
-        <td th:text="${coffee.isDecaf} ? 'Yes' : 'No'"></td>
-        <td th:text="${coffee.stock}"></td>
-        <td th:text="${#strings.replace(#strings.replace(coffee?.flavorNotes, '[', ''), ']', '')}"></td>
-        <td th:text="${coffee.brewMethod}"></td>
-        <td class="action-links">
-            <a class="edit-btn" th:href="@{/edit(id=${coffee.id})}">Edit</a>
-            <a class="delete-btn" th:href="@{/delete(id=${coffee.id})}" onclick="return confirm('Are you sure?');">Delete</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
-
-<!-- Link to Add New Coffee -->
-<a class="add-btn" href="/add">Add New Coffee</a>
+<div class="sidebar">
+    <h2>Kapehan Menu</h2>
+    <a href="/" th:href="@{/}">Home</a>
+    <a href="/add" th:href="@{/add}">Add Coffee</a>
+    <a href="#">Settings</a>
 </div>
+
+<main>
+    <h1>Available Coffees</h1>
+
+    <div class="table-container">
+
+        <!-- Search Bar -->
+        <form method="get" action="/" th:action="@{/}">
+            <input type="text" name="search" placeholder="Search..." th:value="${param.search}">
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- Coffee Table -->
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Coffee Name</th>
+                <th>Type</th>
+                <th>Size</th>
+                <th>Price</th>
+                <th>Roast Level</th>
+                <th>Origin</th>
+                <th>Decaffeinated</th>
+                <th>Stock</th>
+                <th>Flavor Notes</th>
+                <th>Brew Method</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="coffee, stat : ${coffeeList}">
+                <td th:text="${stat.index + 1}"></td>
+                <td th:text="${coffee.name}"></td>
+                <td th:text="${coffee.type}"></td>
+                <td th:text="${coffee.size}"></td>
+                <td th:text="'Php ' + ${coffee.price}"></td>
+                <td th:text="${coffee.roastLevel}"></td>
+                <td th:text="${coffee.origin}"></td>
+                <td th:text="${coffee.decaf} ? 'Yes' : 'No'"></td>
+                <td th:text="${coffee.stock}"></td>
+                <td th:text="${#strings.listJoin(coffee.flavorNotes, ', ')}"></td>
+                <td th:text="${coffee.brewMethod}"></td>
+                <td class="action-links">
+                    <a th:href="@{/edit(id=${coffee.id})}" class="edit-btn">Edit</a>
+                    <a th:href="@{/delete(id=${coffee.id})}" class="delete-btn"
+                       onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Add New Coffee Button -->
+        <a class="add-btn" href="/add" th:href="@{/add}">Add New Coffee</a>
+
+    </div>
+</main>
+
 </body>
 </html>
