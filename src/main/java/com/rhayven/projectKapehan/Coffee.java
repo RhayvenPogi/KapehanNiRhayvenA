@@ -1,7 +1,7 @@
 package com.rhayven.projectKapehan;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
+
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ public class Coffee {
     private int id;
 
     @NotBlank(message = "Name is required")
+    @Size(min = 2, max= 50, message = "Name should have 2 to 50 characters")
     private String name;
 
     @NotBlank(message = "Type is required")
@@ -18,18 +19,22 @@ public class Coffee {
     @NotBlank(message = "Size is required")
     private String size;
 
+    @NotNull(message = "Price is required")
+    @DecimalMin(value= "0.01", message = "No less than 0")
     private double price;
 
     @NotBlank(message = "Roast level is required")
     private String roastLevel;
 
+    @Size(max= 100, message= "Less than 100 characters only")
     private String origin;
 
     private boolean decaf;
 
+    @NotNull(message = "Stock is required")
+    @Min(value= 0, message = "Stock must be greater than 0")
     private int stock;
 
-    @Size(min = 1, message = "Please select at least one flavor note")
     private List<String> flavorNotes;
 
     @NotBlank(message = "Brew method is required")

@@ -17,7 +17,7 @@
   <!-- Coffee Name -->
   <div id="name-area">
     <label for="name">Coffee Name:</label>
-    <input type="text" id="name" th:field="*{name}" minlength="2" maxlength="100"
+    <input type="text" id="name" th:field="*{name}"
            th:classappend="${#fields.hasErrors('name') ? ' error' : ''}">
     <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
   </div>
@@ -87,7 +87,7 @@
   <!-- Stock -->
   <div id="stock-area">
     <label for="stock">Stock:</label>
-    <input type="number" id="stock" th:field="*{stock}" min="0"
+    <input type="number" id="stock" th:field="*{stock}"
            th:classappend="${#fields.hasErrors('stock') ? ' error' : ''}">
     <div class="error" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></div>
   </div>

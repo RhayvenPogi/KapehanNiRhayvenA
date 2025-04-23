@@ -141,6 +141,7 @@ form select {
 }
 
 input[type="text"].error, input[type="number"].error,
+input[type="checkbox"].error,
 select.error {
     border-color: red;
     background-color: #ffe6e6;

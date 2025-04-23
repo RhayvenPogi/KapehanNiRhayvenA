@@ -62,9 +62,11 @@ form select {
 
 /* Error input styles */
 input[type="text"].error, input[type="number"].error,
+input[type="checkbox"].error,
 select.error {
     border-color: red;
     background-color: #ffe6e6;
+    text-align: left;
 }
 
 /* Flavor notes checkboxes */
@@ -98,7 +100,10 @@ select.error {
 /* Error messages */
 .error {
     color: red;
-
+    font-size: small;
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 10px;
 }
 
 /* Buttons */
