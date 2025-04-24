@@ -47,7 +47,7 @@ body {
 }
 
 .main-content{
-    padding: 30px 50px 30px 30px;
+    padding: 30px 70px 30px 30px;
     background-color: var(--bg-color);
 }
 
@@ -90,19 +90,13 @@ form select {
     box-sizing: border-box;
 }
 
-/* Error input styles */
-input[type="text"].error, input[type="number"].error,
-input[type="checkbox"].error,
-select.error {
-    border-color: red;
-    background-color: #ffe6e6;
-    text-align: left;
-}
+
 
 /* Flavor notes checkboxes */
 #flavorNotes-area div {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(4, minmax(100px, 1fr));
+    text-align: center;
     gap: 10px;
     margin-top: 10px;
     margin-bottom: 20px;
@@ -129,6 +123,14 @@ select.error {
 }
 
 /* Error messages */
+input[type="text"].error, input[type="number"].error,
+input[type="checkbox"].error,
+select.error {
+    border-color: red;
+    background-color: #ffe6e6;
+    text-align: left;
+}
+
 .error {
     color: red;
     font-size: small;
@@ -139,7 +141,7 @@ select.error {
 
 /* Buttons */
 form button {
-    padding: 10px 15px;
+    padding: 20px 15px;
     margin: 10px 5px;
     background-color: var(--button-bg);
     color: white;
@@ -147,10 +149,27 @@ form button {
     border-radius: 5px;
     cursor: pointer;
     width: 47%;
+    font-size: larger;
 }
 
 form button:hover {
     background-color: var(--button-hover-bg);
+}
+
+@media (max-width: 900px) {
+    body {
+        grid-template-columns: 1fr;
+
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .sidebar h2 {
+        display: none;
+    }
+
 }
 
 

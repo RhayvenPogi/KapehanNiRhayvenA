@@ -96,7 +96,6 @@ form button {
     border-radius: 5px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 form button:hover {
@@ -131,7 +130,6 @@ table th {
     font-size: 14px;
     display: inline-block;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
 }
 
 .edit-btn {
@@ -161,24 +159,20 @@ table th {
     max-width: 200px;
     text-align: center;
     margin: 20px auto 0;
-    transition: background-color 0.3s ease;
 }
 
 .add-btn:hover {
     background-color: var(--action-hover-bg);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     body {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto 1fr;
     }
 
     .sidebar {
-        grid-column: 1 / -1;
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 15px;
+        display: none;
     }
 
     .sidebar h2 {
@@ -197,8 +191,4 @@ table th {
         font-size: 12px;
     }
 
-    .add-btn {
-        font-size: 12px;
-        padding: 10px;
-    }
 }

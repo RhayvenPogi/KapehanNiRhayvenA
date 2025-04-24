@@ -9,7 +9,6 @@ public class Coffee {
 
     private int id;
 
-    @NotBlank(message = "Name is required")
     @Size(min = 2, max= 50, message = "Name should have 2 to 50 characters")
     private String name;
 
@@ -19,8 +18,7 @@ public class Coffee {
     @NotBlank(message = "Size is required")
     private String size;
 
-    @NotNull(message = "Price is required")
-    @DecimalMin(value= "0.01", message = "No less than 0")
+    @DecimalMin(value= "0.01", message = "Price is required, No less than 0")
     private double price;
 
     @NotBlank(message = "Roast level is required")
@@ -31,8 +29,7 @@ public class Coffee {
 
     private boolean decaf;
 
-    @NotNull(message = "Stock is required")
-    @Min(value= 0, message = "Stock must be greater than 0")
+    @Min(value= 0, message = "Stock is required. Stock must be greater than 0")
     private int stock;
 
     private List<String> flavorNotes;

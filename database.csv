@@ -1,9 +1,8 @@
-1,Flat White,Robusta,Small,3.99,Medium,Kenya,false,4,Nutty|Fruity|Spicy|Peach,Drip
+1,Flat White,Robusta,Small,3.99,Medium,Kenya,true,4,Nutty|Fruity|Spicy|Peach,Drip
 2,Barako,Robusta,Large,68.0,Dark,La Union,true,5,Fruity|Floral,French Press
 3,Latte,Robusta,Small,68.0,Dark,Brazil,false,18,vanilla|caramel,Espresso
 4,Cappuccino,Liberica,Small,0.03,Light,Ethiopia,false,10,Nutty|Floral,Drip
-5,Cappuccino,Arabica,Small,0.04,Light,,true,10,Fruity,Drip
-6,ahhdadehh,Arabica,Small,0.04,Light,Marz,false,0,Nutty|Fruity|Chocolatey|Sweet|Caramel|Almond|Butterscotch,Espresso
-0,ahhdadehh,Arabica,Small,3.0,Light,,false,0,,Espresso
-0,ffg4g,Arabica,Small,0.05,Light,,false,0,,Espresso
-0,fegg23g23,Arabica,Small,44.0,Light,,true,0,,Espresso
+5,Cappuccino,Arabica,Small,0.04,Light,Brazil,true,10,Fruity,Drip
+0,dade,Geisha,Large,0.44,Light,Kenya,true,4,Nutty|Blackberry|Butterscotch,French Press
+0,Rhayven Pogi,Arabica,Small,1.19,Medium,Brazil,true,34,Spicy|Caramel|Peach,Aeropress
+0,Latte,Liberica,Small,0.14,Light,Guatemala,true,7,,French Press
