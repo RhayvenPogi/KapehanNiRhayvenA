@@ -24,14 +24,14 @@
 
         <div id="name-area">
             <label for="name">Coffee Name:</label>
-            <input type="text" id="name"  name="name" th:field="*{name}"
+            <input type="text" id="name" th:field="*{name}"
                    th:classappend="${#fields.hasErrors('name')} ? 'error' : ''">
             <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
         </div>
 
         <div id="type-area">
             <label for="type">Type:</label>
-            <select id="type" name="type"  th:field="*{type}"
+            <select id="type" th:field="*{type}"
                     th:classappend="${#fields.hasErrors('type')} ? 'error' : ''">
                 <option value="Arabica" th:selected="${coffee.type == 'Arabica'}">Arabica</option>
                 <option value="Robusta" th:selected="${coffee.type == 'Robusta'}">Robusta</option>
@@ -47,7 +47,7 @@
 
         <div id="size-area">
             <label for="size">Size:</label>
-            <select id="size" name="size" th:field="*{size}"
+            <select id="size" th:field="*{size}"
                     th:classappend="${#fields.hasErrors('size')} ? 'error' : ''">
                 <option value="Small">Small</option>
                 <option value="Medium">Medium</option>
@@ -58,14 +58,14 @@
 
         <div id="price-area">
             <label for="price">Price:</label>
-            <input type="number" name="price" id="price" th:field="*{price}" step="0.01"
+            <input type="number" id="price" th:field="*{price}" step="0.01"
                    th:classappend="${#fields.hasErrors('price')} ? 'error' : ''">
             <div class="error" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
         </div>
 
         <div id="roastLevel-area">
             <label for="roastLevel">Roast Level:</label>
-            <select id="roastLevel" name="roastLevel" th:field="*{roastLevel}"
+            <select id="roastLevel" th:field="*{roastLevel}"
                     th:classappend="${#fields.hasErrors('roastLevel')} ? 'error' : ''">
                 <option value="Light" th:selected="${coffee.roastLevel == 'Light'}">Light</option>
                 <option value="Medium" th:selected="${coffee.roastLevel == 'Medium'}">Medium</option>
@@ -76,20 +76,20 @@
 
         <div id="origin-area">
             <label for="origin">Origin:</label>
-            <input type="text" id="origin" name="origin" th:field="*{origin}"
+            <input type="text" id="origin" th:field="*{origin}"
                    th:classappend="${#fields.hasErrors('origin')} ? 'error' : ''">
             <div class="error" th:if="${#fields.hasErrors('origin')}" th:errors="*{origin}"></div>
         </div>
 
         <div id="decaf-area">
             <label for="decaf">Decaffeinated:</label>
-            <input type="checkbox" id="decaf" name="decaf" th:field="*{decaf}">
+            <input type="checkbox" id="decaf"  th:field="*{decaf}">
             <label for="decaf">Yes</label>
         </div>
 
         <div id="stock-area">
             <label for="stock">Stock:</label>
-            <input type="number" id="stock" name="stock" th:field="*{stock}"
+            <input type="number" id="stock" th:field="*{stock}"
                    th:classappend="${#fields.hasErrors('stock')} ? 'error' : ''">
             <div class="error" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></div>
         </div>
@@ -97,33 +97,33 @@
         <div id="flavorNotes-area">
             <label>Flavor Notes:</label>
             <div>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Nutty"> Nutty</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Fruity"> Fruity</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Chocolatey"> Chocolatey</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Spicy"> Spicy</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Citrusy"> Citrusy</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Sweet"> Sweet</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Floral"> Floral</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Herbal"> Herbal</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Smoky"> Smoky</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Woody"> Woody</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Savory"> Savory</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Caramel"> Caramel</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Vanilla"> Vanilla</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Almond"> Almond</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Pineapple"> Pineapple</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Maple"> Maple</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Blackberry"> Blackberry</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Peach"> Peach</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Cinnamon"> Cinnamon</label>
-                <label><input type="checkbox" name="flavorNotes" th:field="*{flavorNotes}" value="Butterscotch"> Butterscotch</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Nutty"> Nutty</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Fruity"> Fruity</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Chocolatey"> Chocolatey</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Spicy"> Spicy</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Citrusy"> Citrusy</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Sweet"> Sweet</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Floral"> Floral</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Herbal"> Herbal</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Smoky"> Smoky</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Woody"> Woody</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Savory"> Savory</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Caramel"> Caramel</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Vanilla"> Vanilla</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Almond"> Almond</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Pineapple"> Pineapple</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Maple"> Maple</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Blackberry"> Blackberry</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Peach"> Peach</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Cinnamon"> Cinnamon</label>
+                <label><input type="checkbox" th:field="*{flavorNotes}" value="Butterscotch"> Butterscotch</label>
             </div>
             <div class="error" th:if="${#fields.hasErrors('flavorNotes')}" th:errors="*{flavorNotes}"></div>
         </div>
 
         <div id="brewMethod-area">
             <label for="brewMethod">Brew Method:</label>
-            <select id="brewMethod" name="brewMethod" th:field="*{brewMethod}"
+            <select id="brewMethod" th:field="*{brewMethod}"
                     th:classappend="${#fields.hasErrors('brewMethod')} ? 'error' : ''">
                 <option value="Espresso" th:selected="${coffee.brewMethod == 'Espresso'}">Espresso</option>
                 <option value="Drip" th:selected="${coffee.brewMethod == 'Drip'}">Drip</option>
