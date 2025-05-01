@@ -1,5 +1,6 @@
-package com.rhayven.projectKapehan;
+package com.rhayven.projectKapehan.service;
 
+import com.rhayven.projectKapehan.objects.Coffee;
 import org.springframework.stereotype.Service;
 import java.io.*;
 import java.util.ArrayList;

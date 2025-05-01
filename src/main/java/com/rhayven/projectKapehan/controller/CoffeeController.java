@@ -1,5 +1,9 @@
-package com.rhayven.projectKapehan;
+package com.rhayven.projectKapehan.controller;
 
+import jakarta.servlet.http.HttpSession;
+import com.rhayven.projectKapehan.objects.Coffee;
+import com.rhayven.projectKapehan.objects.KapehanUser;
+import com.rhayven.projectKapehan.service.CoffeeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +32,12 @@ public class CoffeeController {
      * @return The view name for the coffee list page.
      */
     @GetMapping("/")
-    public String index(@RequestParam(defaultValue = "") String search, Model model) {
+    public String index(@RequestParam(defaultValue = "") String search,  HttpSession session, Model model) {
+        KapehanUser user= (KapehanUser) session.getAttribute("user");
+        if(user == null) {
+            return "redirect:/login";
+        }
+
         model.addAttribute("coffeeList", coffeeService.searchCoffee(search));
         return "index";
     }
@@ -40,7 +49,12 @@ public class CoffeeController {
      * @return Redirects to coffee list.
      */
     @GetMapping("/delete")
-    public String deleteCoffee(@RequestParam("id") int id) {
+    public String deleteCoffee(@RequestParam("id") int id,  HttpSession session) {
+        KapehanUser user= (KapehanUser) session.getAttribute("user");
+        if(user == null) {
+            return "redirect:/login";
+        }
+
         coffeeService.deleteCoffee(id);
         return "redirect:/";
     }
@@ -52,7 +66,12 @@ public class CoffeeController {
      * @return View name for new coffee form.
      */
     @GetMapping("/add")
-    public String addCoffeeForm(Model model) {
+    public String addCoffeeForm(Model model,  HttpSession session) {
+        KapehanUser user= (KapehanUser) session.getAttribute("user");
+        if(user == null) {
+            return "redirect:/login";
+        }
+
         model.addAttribute("coffee", new Coffee());
         return "new";
     }
@@ -65,7 +84,11 @@ public class CoffeeController {
      * @return Redirects to coffee list or returns to form if errors.
      */
     @PostMapping("/save")
-    public String storeSave(@Valid @ModelAttribute("coffee") Coffee coffee, BindingResult result, Model model) {
+    public String storeSave(@Valid @ModelAttribute("coffee") Coffee coffee,  HttpSession session, BindingResult result, Model model) {
+        KapehanUser user= (KapehanUser) session.getAttribute("user");
+        if(user == null) {
+            return "redirect:/login";
+        }
         if (result.hasErrors()) {
             return "new"; // return to form if errors are present
         }
@@ -81,7 +104,12 @@ public class CoffeeController {
      * @return View name for edit form.
      */
     @GetMapping("/edit")
-    public String editCoffee(@RequestParam("id") int id, Model model) {
+    public String editCoffee(@RequestParam("id") int id, Model model,  HttpSession session) {
+        KapehanUser user= (KapehanUser) session.getAttribute("user");
+        if(user == null) {
+            return "redirect:/login";
+        }
+
         Coffee coffee = coffeeService.getCoffee(id);
         if (coffee != null) {
             model.addAttribute("coffee", coffee);
@@ -98,7 +126,11 @@ public class CoffeeController {
      * @return Redirects to coffee list or returns to form if errors.
      */
     @PostMapping("/update")
-    public String storeUpdate(@Valid @ModelAttribute("coffee") Coffee coffee, BindingResult result) {
+    public String storeUpdate(@Valid @ModelAttribute("coffee") Coffee coffee,  HttpSession session, BindingResult result) {
+        KapehanUser user= (KapehanUser) session.getAttribute("user");
+        if(user == null) {
+            return "redirect:/login";
+        }
         if (result.hasErrors()) {
             return "edit"; // return to edit form if errors are present
         }

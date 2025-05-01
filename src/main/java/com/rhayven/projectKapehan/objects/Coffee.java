@@ -1,4 +1,4 @@
-package com.rhayven.projectKapehan;
+package com.rhayven.projectKapehan.objects;
 
 import jakarta.validation.constraints.*;
 
