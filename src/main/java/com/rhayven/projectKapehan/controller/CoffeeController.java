@@ -1,8 +1,8 @@
 package com.rhayven.projectKapehan.controller;
 
 import jakarta.servlet.http.HttpSession;
-import com.rhayven.projectKapehan.objects.Coffee;
-import com.rhayven.projectKapehan.objects.KapehanUser;
+import com.rhayven.projectKapehan.models.Coffee;
+import com.rhayven.projectKapehan.models.KapehanUser;
 import com.rhayven.projectKapehan.service.CoffeeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,9 +89,13 @@ public class CoffeeController {
         if(user == null) {
             return "redirect:/login";
         }
+
         if (result.hasErrors()) {
+            System.out.println(result.getAllErrors());
             return "new"; // return to form if errors are present
         }
+
+
         coffeeService.addCoffee(coffee);
         return "redirect:/";
     }
@@ -126,16 +130,23 @@ public class CoffeeController {
      * @return Redirects to coffee list or returns to form if errors.
      */
     @PostMapping("/update")
-    public String storeUpdate(@Valid @ModelAttribute("coffee") Coffee coffee,  HttpSession session, BindingResult result) {
+    public String storeUpdate(@Valid @ModelAttribute("coffee") Coffee coffee,Model model, HttpSession session, BindingResult result) {
         KapehanUser user= (KapehanUser) session.getAttribute("user");
         if(user == null) {
             return "redirect:/login";
         }
         if (result.hasErrors()) {
+            model.addAttribute("coffee", coffee);
+            System.out.println(result.getAllErrors());
             return "edit"; // return to edit form if errors are present
         }
 
-        coffeeService.updateCoffee(coffee.getId(), coffee);
+        Coffee existingCoffee = coffeeService.getCoffee(coffee.getId());
+        if (existingCoffee != null) {
+            // save the object if form is valid or passes all rules
+            coffeeService.updateCoffee(coffee.getId(), coffee);
+        }
+
         return "redirect:/";
     }
 }

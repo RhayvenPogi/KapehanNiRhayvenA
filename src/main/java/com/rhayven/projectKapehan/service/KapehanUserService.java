@@ -1,9 +1,8 @@
 package com.rhayven.projectKapehan.service;
 
-import com.rhayven.projectKapehan.objects.KapehanUser;
+import com.rhayven.projectKapehan.models.KapehanUser;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.*;
 import java.util.ArrayList;

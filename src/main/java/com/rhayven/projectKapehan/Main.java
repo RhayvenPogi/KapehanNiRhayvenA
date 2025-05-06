@@ -16,6 +16,7 @@ public class Main {
      * It runs the Spring application context.
      */
     public static void main(String[] args) {
+        //run();
         SpringApplication.run(Main.class, args);
     }
 
@@ -25,7 +26,7 @@ public class Main {
      *
      */
     public static void run() {
-        String plainPassword = "poginirhayven";
+        String plainPassword = "paextrashotpls";
         String hash = new BCryptPasswordEncoder().encode(plainPassword);
         System.out.println(hash);
     }

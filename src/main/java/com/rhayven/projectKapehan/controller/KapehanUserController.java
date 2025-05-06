@@ -1,6 +1,6 @@
 package com.rhayven.projectKapehan.controller;
 
-import com.rhayven.projectKapehan.objects.KapehanUser;
+import com.rhayven.projectKapehan.models.KapehanUser;
 import com.rhayven.projectKapehan.service.KapehanUserService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;

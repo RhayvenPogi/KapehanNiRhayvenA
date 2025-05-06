@@ -1,4 +1,4 @@
-package com.rhayven.projectKapehan.objects;
+package com.rhayven.projectKapehan.models;
 
 import jakarta.validation.constraints.NotBlank;
 
