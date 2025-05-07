@@ -72,6 +72,7 @@ public class CoffeeService {
     }
 
     public void addCoffee(Coffee coffee) {
+        coffee.setId(getLastId() + 1);
         coffeeList.add(coffee);
         writeToDisk();
     }
@@ -96,7 +97,9 @@ public class CoffeeService {
                         + coffee.isDecaf() + ","
                         + coffee.getStock() + ","
                         + String.join("|", coffee.getFlavorNotes()) + ","
-                        + coffee.getBrewMethod());
+                        + coffee.getBrewMethod() + ","
+                        + coffee.getCoffeePicture()
+                );
                 bw.newLine();
             }
         } catch (IOException e) {
@@ -129,6 +132,7 @@ public class CoffeeService {
                 coffee.setStock(Integer.parseInt(data[8]));
                 coffee.setFlavorNotes(Arrays.asList(data[9].split("\\|")));
                 coffee.setBrewMethod(data[10]);
+                coffee.setCoffeePicture(data[11]);
 
                 coffeeList.add(coffee);
             }

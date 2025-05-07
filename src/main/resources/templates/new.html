@@ -20,7 +20,7 @@
 
     <h1>Add New Coffee</h1>
 
-    <form th:action="@{/save}" th:object="${coffee}" method="post" id="coffee-form">
+    <form th:action="@{/save}" th:object="${coffee}" enctype="multipart/form-data" method="post" id="coffee-form">
 
         <div id="name-area">
             <label for="name">Coffee Name:</label>
@@ -133,6 +133,11 @@
                 <option value="Cold Brew" th:selected="${coffee.brewMethod == 'Cold Brew'}">Cold Brew</option>
             </select>
             <div class="error" th:if="${#fields.hasErrors('brewMethod')}" th:errors="*{brewMethod}"></div>
+        </div>
+
+        <div>
+            <label for="coffeePicture">Coffee Picture</label>
+            <input type="file" id="coffeePicture" name="coffeePic"/>
         </div>
 
         <div id="form-buttons-area">

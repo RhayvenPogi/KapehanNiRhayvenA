@@ -129,7 +129,8 @@ table th {
     padding: 6px 10px;
     font-size: 14px;
     display: inline-block;
-    border-radius: 5px;
+    border-radius: 8px;
+    width: 60px;
 }
 
 .edit-btn {
@@ -149,21 +150,23 @@ table th {
 }
 
 .add-btn {
-    padding: 12px;
-    font-size: 14px;
-    border-radius: 5px;
-    color: white;
-    text-decoration: none;
     background-color: var(--action-bg);
-    display: block;
-    max-width: 200px;
-    text-align: center;
-    margin: 20px auto 0;
+    width: 50px;
 }
 
 .add-btn:hover {
     background-color: var(--action-hover-bg);
 }
+
+.view-btn{
+    width: 50px;
+    background-color: darkcyan;
+}
+
+.view-btn:hover{
+    background-color: darkslateblue;
+}
+
 
 @media (max-width: 900px) {
     body {

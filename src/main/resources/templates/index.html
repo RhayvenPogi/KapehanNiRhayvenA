@@ -59,6 +59,7 @@
                 <td th:text="${#strings.listJoin(coffee.flavorNotes, ', ')}"></td>
                 <td th:text="${coffee.brewMethod}"></td>
                 <td class="action-links">
+                    <a th:href="@{/coffee/{id}(id=${coffee.id})}" class="view-btn">View</a>
                     <a th:href="@{/edit(id=${coffee.id})}" class="edit-btn">Edit</a>
                     <a th:href="@{/delete(id=${coffee.id})}" class="delete-btn"
                        onclick="return confirm('Are you sure?');">Delete</a>

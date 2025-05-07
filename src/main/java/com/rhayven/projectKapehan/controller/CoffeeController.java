@@ -10,6 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
 
 /**
  * CoffeeController handles requests for managing coffee records.
@@ -84,7 +89,7 @@ public class CoffeeController {
      * @return Redirects to coffee list or returns to form if errors.
      */
     @PostMapping("/save")
-    public String storeSave(@Valid @ModelAttribute("coffee") Coffee coffee,  HttpSession session, BindingResult result, Model model) {
+    public String storeSave(@Valid @ModelAttribute("coffee") Coffee coffee, @RequestParam("coffeePic") MultipartFile coffeePicture, HttpSession session, BindingResult result, Model model) {
         KapehanUser user= (KapehanUser) session.getAttribute("user");
         if(user == null) {
             return "redirect:/login";
@@ -94,6 +99,27 @@ public class CoffeeController {
             System.out.println(result.getAllErrors());
             return "new"; // return to form if errors are present
         }
+
+        //handle the file upload
+        if (!coffeePicture.isEmpty()) {
+            String path = "data/coffee_pictures/";
+            File uploadFolder = new File(path);
+
+            //create folder if not existing
+            if(!uploadFolder.exists()){
+                uploadFolder.mkdirs();
+            }
+
+            String fileName = UUID.randomUUID() + coffeePicture.getOriginalFilename().substring(coffeePicture.getOriginalFilename().lastIndexOf(".")) ;
+
+            try {
+                coffeePicture.transferTo(new File(uploadFolder.getAbsolutePath()+ File.separator +fileName));
+                coffee.setCoffeePicture(fileName);
+            } catch (IOException e) {
+                System.out.println("File upload error: " + e.getMessage());
+            }
+        }
+
 
 
         coffeeService.addCoffee(coffee);
@@ -148,5 +174,17 @@ public class CoffeeController {
         }
 
         return "redirect:/";
+    }
+
+    @GetMapping("/coffee/{id}")
+    public String view(@PathVariable int id, Model model, HttpSession session) {
+        KapehanUser user= (KapehanUser) session.getAttribute("user");
+        if(user == null) {
+            return "redirect:/login";
+        }
+
+        Coffee coffee = coffeeService.getCoffee(id);
+        model.addAttribute("coffee", coffee);
+        return "coffee";
     }
 }
