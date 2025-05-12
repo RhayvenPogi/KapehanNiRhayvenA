@@ -2,7 +2,7 @@
     --font-family: "Arial", sans-serif;
     --bg-color: #f9f9f9;
     --text-color: #3F4F44;
-    --accent-color: #DCD7C9;
+    --accent-color: rgba(220, 215, 201, 0.6);
     --button-bg: #A27B5C;
     --button-hover-bg: #8a6346;
     --shadow-color: rgba(0, 0, 0, 0.1);
@@ -11,58 +11,29 @@
     --danger-hover-bg: #7c0e04;
     --action-bg: #3F4F44;
     --action-hover-bg: #2C3930;
-    --sidebar-bg: #3F4F44;
-    --sidebar-text: #fff;
-    --sidebar-hover: #2C3930;
 }
 
 body {
     margin: 0;
     font-family: var(--font-family);
     background-color: var(--bg-color);
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    grid-template-rows: auto 1fr;
-    min-height: 100vh;
+    color: var(--text-color);
+    line-height: 1.5;
 }
 
-.sidebar {
-    grid-row: 1 / span 2;
-    background-color: var(--sidebar-bg);
-    padding: 20px;
-    color: var(--sidebar-text);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.sidebar h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: var(--accent-color);
-}
-
-.sidebar a {
-    color: var(--sidebar-text);
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.sidebar a:hover {
-    background-color: var(--sidebar-hover);
-}
-
-main {
-    padding: 30px 20px;
-    background-color: var(--bg-color);
+/* Main content area */
+.main-content {
+    padding: 4vw;
+    width: 90%; /* or 100% depending on how much space you want on each side */
+    max-width: 100%; /* Ensures it never exceeds the container size */
+    margin: 0 auto;
 }
 
 h1 {
-    color: var(--text-color);
+    font-size: 2rem;
     font-weight: bold;
-    text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    color: var(--text-color);
 }
 
 .table-container {
@@ -149,43 +120,16 @@ table th {
     background-color: var(--danger-hover-bg);
 }
 
-.add-btn {
-    background-color: var(--action-bg);
-    width: 50px;
-}
-
-.add-btn:hover {
-    background-color: var(--action-hover-bg);
-}
-
-.view-btn{
+.view-btn {
     width: 50px;
     background-color: darkcyan;
 }
 
-.view-btn:hover{
-    background-color: darkslateblue;
+.view-btn:hover {
+    background-color: #016868;
 }
 
-
 @media (max-width: 900px) {
-    body {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto 1fr;
-    }
-
-    .sidebar {
-        display: none;
-    }
-
-    .sidebar h2 {
-        display: none;
-    }
-
-    main {
-        padding: 20px;
-    }
-
     table {
         font-size: 14px;
     }
@@ -193,5 +137,4 @@ table th {
     .action-links a {
         font-size: 12px;
     }
-
 }

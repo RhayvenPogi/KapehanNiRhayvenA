@@ -29,6 +29,10 @@ public class CoffeeController {
         this.coffeeService = coffeeService;
     }
 
+    @GetMapping("/home")
+    public String home(Model model) {
+        return "layouts/master";
+    }
     /**
      * Displays the list of coffees with optional search functionality.
      *
@@ -89,7 +93,7 @@ public class CoffeeController {
      * @return Redirects to coffee list or returns to form if errors.
      */
     @PostMapping("/save")
-    public String storeSave(@Valid @ModelAttribute("coffee") Coffee coffee, @RequestParam("coffeePic") MultipartFile coffeePicture, HttpSession session, BindingResult result, Model model) {
+    public String storeSave(@Valid @ModelAttribute("coffee") Coffee coffee, BindingResult result, @RequestParam("coffeePic") MultipartFile coffeePicture, HttpSession session) {
         KapehanUser user= (KapehanUser) session.getAttribute("user");
         if(user == null) {
             return "redirect:/login";
@@ -104,7 +108,6 @@ public class CoffeeController {
         if (!coffeePicture.isEmpty()) {
             String path = "data/coffee_pictures/";
             File uploadFolder = new File(path);
-
             //create folder if not existing
             if(!uploadFolder.exists()){
                 uploadFolder.mkdirs();
@@ -119,8 +122,6 @@ public class CoffeeController {
                 System.out.println("File upload error: " + e.getMessage());
             }
         }
-
-
 
         coffeeService.addCoffee(coffee);
         return "redirect:/";

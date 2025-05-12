@@ -1,33 +1,24 @@
+<!-- index.html -->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/master :: html(
+        title=~{::title},
+        link=~{::link},
+        content=~{::section})}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee List</title>
+    <title>Coffee Dashboard</title>
     <link rel="stylesheet" th:href="@{/css/styleIndex.css}">
 </head>
 <body>
-
-<div class="sidebar">
-    <h2>Kapehan Menu</h2>
-    <a href="/" th:href="@{/}">Home</a>
-    <a href="/add" th:href="@{/add}">Add Coffee</a>
-    <a href="#">Settings</a>
-    <a href="/login" th:href="@{/login}">Log Out</a>
-</div>
-
-<main>
+<section class="main-content">
     <h1>Available Coffees</h1>
 
+    <form method="get" th:action="@{/}">
+        <input type="text" name="search" placeholder="Search..." th:value="${param.search}">
+        <button type="submit">Search</button>
+    </form>
+
     <div class="table-container">
-
-        <!-- Search Bar -->
-        <form method="get" action="/" th:action="@{/}">
-            <input type="text" name="search" placeholder="Search..." th:value="${param.search}">
-            <button type="submit">Search</button>
-        </form>
-
-        <!-- Coffee Table -->
         <table>
             <thead>
             <tr>
@@ -38,7 +29,7 @@
                 <th>Price</th>
                 <th>Roast Level</th>
                 <th>Origin</th>
-                <th>Decaffeinated</th>
+                <th>Decaf</th>
                 <th>Stock</th>
                 <th>Flavor Notes</th>
                 <th>Brew Method</th>
@@ -61,16 +52,12 @@
                 <td class="action-links">
                     <a th:href="@{/coffee/{id}(id=${coffee.id})}" class="view-btn">View</a>
                     <a th:href="@{/edit(id=${coffee.id})}" class="edit-btn">Edit</a>
-                    <a th:href="@{/delete(id=${coffee.id})}" class="delete-btn"
-                       onclick="return confirm('Are you sure?');">Delete</a>
+                    <a th:href="@{/delete(id=${coffee.id})}" class="delete-btn" onclick="return confirm('Are you sure?');">Delete</a>
                 </td>
             </tr>
             </tbody>
         </table>
-
-
     </div>
-</main>
-
+</section>
 </body>
 </html>

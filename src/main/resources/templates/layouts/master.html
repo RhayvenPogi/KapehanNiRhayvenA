@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="html(title, link, content)">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:replace="${title}"></title>
+  <link rel="stylesheet" th:href="@{/css/layout.css}">
+
+  <th:block th:replace="${link}"></th:block>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div th:replace="~{components/mainNav::sidebar}"></div>
+
+    <!-- Main Content Area -->
+    <main>
+      <!-- This is where the content of other pages will be injected -->
+      <div th:replace="${content}"></div>
+    </main>
+
+
+</body>
+</html>

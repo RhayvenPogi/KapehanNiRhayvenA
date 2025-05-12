@@ -1,0 +1,151 @@
+:root {
+    --font-family: Arial, sans-serif;
+    --bg-color: whitesmoke;
+    --text-color: #3F4F44;
+    --accent-color: #DCD7C9;
+    --button-bg: #3F4F44;
+    --button-hover-bg: #2C3930;
+    --shadow-color: #2C3930;
+    --border-color: #ccc;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    min-height: 100vh;
+}
+
+/* Sidebar styling */
+.sidebar {
+    grid-column: 1;
+    grid-row: 1;
+    background-color: var(--button-bg);
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: var(--button-hover-bg);
+}
+
+/* Main content area */
+.main-content {
+    grid-column: 2;
+    padding: 2rem;
+    margin: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-radius: 10px;
+    background-color: var(--accent-color);
+    overflow: auto;
+}
+
+/* Heading */
+h1 {
+    color: var(--text-color);
+    font-weight: bold;
+    text-align: left;
+    margin: 2rem;
+}
+
+/* Coffee header layout (image + name + price) */
+.coffeeHeader {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background-color: rgba(63, 79, 68, 0.69);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid var(--button-bg);
+    border-bottom: 5px solid var(--button-bg);
+}
+
+.coffeeHeader img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--button-bg);
+}
+
+.coffeeInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.coffeeInfo h2 {
+    margin: 0;
+    font-size: 1.75rem;
+    color: var(--accent-color);
+}
+
+.coffeeInfo p {
+    margin: 0.5rem 0 0;
+    font-size: 1.2rem;
+    color: var(--accent-color);
+}
+
+/* Details grid */
+.details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 2rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.details div {
+    background-color: rgba(63, 79, 68, 0.69);
+    padding: 1rem;
+    border-radius: 10px;
+    border-left: 5px solid var(--button-bg);
+    border-bottom: 5px solid var(--button-bg);
+    color: #fff;
+    text-align: center;
+    min-width: 250px;
+    max-width: 300px;
+    flex: 1 1 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.details ul {
+    margin: 0.5rem 0 0 1rem;
+    padding: 0;
+    color: #fff;
+}
+
+.details li {
+    list-style-type: disc;
+}
+

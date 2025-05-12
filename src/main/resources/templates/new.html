@@ -1,19 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/master :: html(content=~{::div}, link=~{::link}, title=~{::title})}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>New Coffee</title>
+    <title>Add New Coffee</title>
     <link rel="stylesheet" th:href="@{/css/styleAdd.css}">
 </head>
 <body>
-
-<!-- Sidebar -->
-<div class="sidebar">
-    <h2>Kapehan Menu</h2>
-    <a href="/" th:href="@{/}">Back to Coffee List</a>
-    <a href="#">Settings</a>
-</div>
 
 <!-- Main Content -->
 <div class="main-content">
@@ -22,13 +13,15 @@
 
     <form th:action="@{/save}" th:object="${coffee}" enctype="multipart/form-data" method="post" id="coffee-form">
 
+        <!-- Coffee Name -->
         <div id="name-area">
             <label for="name">Coffee Name:</label>
-            <input type="text" id="name" th:field="*{name}"
-                   th:classappend="${#fields.hasErrors('name')} ? 'error' : ''">
+            <input type="text" id="name" th:field="*{name}" placeholder="Enter coffee name"
+                   th:classappend="${#fields.hasErrors('name')} ? 'error' : ''"/>
             <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
         </div>
 
+        <!-- Coffee Type -->
         <div id="type-area">
             <label for="type">Type:</label>
             <select id="type" th:field="*{type}"
@@ -45,6 +38,7 @@
             <div class="error" th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></div>
         </div>
 
+        <!-- Coffee Size -->
         <div id="size-area">
             <label for="size">Size:</label>
             <select id="size" th:field="*{size}"
@@ -56,13 +50,15 @@
             <div class="error" th:if="${#fields.hasErrors('size')}" th:errors="*{size}"></div>
         </div>
 
+        <!-- Coffee Price -->
         <div id="price-area">
             <label for="price">Price:</label>
             <input type="number" id="price" th:field="*{price}" step="0.01"
-                   th:classappend="${#fields.hasErrors('price')} ? 'error' : ''">
+                   th:classappend="${#fields.hasErrors('price')} ? 'error' : ''"/>
             <div class="error" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
         </div>
 
+        <!-- Roast Level -->
         <div id="roastLevel-area">
             <label for="roastLevel">Roast Level:</label>
             <select id="roastLevel" th:field="*{roastLevel}"
@@ -74,26 +70,30 @@
             <div class="error" th:if="${#fields.hasErrors('roastLevel')}" th:errors="*{roastLevel}"></div>
         </div>
 
+        <!-- Coffee Origin -->
         <div id="origin-area">
             <label for="origin">Origin:</label>
             <input type="text" id="origin" th:field="*{origin}"
-                   th:classappend="${#fields.hasErrors('origin')} ? 'error' : ''">
+                   th:classappend="${#fields.hasErrors('origin')} ? 'error' : ''"/>
             <div class="error" th:if="${#fields.hasErrors('origin')}" th:errors="*{origin}"></div>
         </div>
 
+        <!-- Decaffeinated Checkbox -->
         <div id="decaf-area">
             <label for="decaf">Decaffeinated:</label>
-            <input type="checkbox" id="decaf"  th:field="*{decaf}">
+            <input type="checkbox" id="decaf"  th:field="*{decaf}"/>
             <label for="decaf">Yes</label>
         </div>
 
+        <!-- Stock -->
         <div id="stock-area">
             <label for="stock">Stock:</label>
             <input type="number" id="stock" th:field="*{stock}"
-                   th:classappend="${#fields.hasErrors('stock')} ? 'error' : ''">
+                   th:classappend="${#fields.hasErrors('stock')} ? 'error' : ''"/>
             <div class="error" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></div>
         </div>
 
+        <!-- Flavor Notes (checkboxes) -->
         <div id="flavorNotes-area">
             <label>Flavor Notes:</label>
             <div>
@@ -121,6 +121,7 @@
             <div class="error" th:if="${#fields.hasErrors('flavorNotes')}" th:errors="*{flavorNotes}"></div>
         </div>
 
+        <!-- Brew Method -->
         <div id="brewMethod-area">
             <label for="brewMethod">Brew Method:</label>
             <select id="brewMethod" th:field="*{brewMethod}"
@@ -135,16 +136,18 @@
             <div class="error" th:if="${#fields.hasErrors('brewMethod')}" th:errors="*{brewMethod}"></div>
         </div>
 
-        <div>
-            <label for="coffeePicture">Coffee Picture</label>
-            <input type="file" id="coffeePicture" name="coffeePic"/>
+        <!-- Coffee Picture -->
+        <div id="coffeePicture-area">
+            <label for="coffeePicture">Coffee Picture:</label>
+            <input type="file" id="coffeePicture" name="coffeePic"
+                   accept="image/png, image/jpeg, image/jpg"/>
         </div>
 
+        <!-- Form Buttons -->
         <div id="form-buttons-area">
             <button type="submit">Submit</button>
             <button type="reset">Reset</button>
         </div>
-
 
     </form>
 </div>

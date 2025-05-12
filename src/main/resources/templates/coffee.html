@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>View Coffee | [[${coffee.name}]]</title>
+    <link rel="stylesheet" th:href="@{/css/details.css}">
 </head>
 <body>
     <div class="sidebar">
@@ -11,39 +12,43 @@
         <a href="/add" th:href="@{/add}">Add Coffee</a>
         <a href="#">Settings</a>
     </div>
+    <div>
+    <h1>Coffee Details:</h1>
+        <div class="main-content">
 
-    <div class="main-content">
-        <div class="coffeePicture">
-            <!-- If student has uploaded a profile picture -->
-            <img th:if="${coffee.coffeePicture != null}"
-                 th:src="@{'/' + ${coffee.coffeePicture}}"
-                 alt="Coffee Picture" />
 
-            <!-- If no picture, fallback to default based on coffee decaf value -->
-            <img th:if="${coffee.coffeePicture == null}"
-                 th:src="@{${coffee.decaf == true} ? '/images/decaf.png' : '/images/regular.png'}"
-                 alt="Default Coffee Picture" />
+            <div class="coffeePicture">
+                <div class="coffeeHeader">
+                    <img th:if="${coffee.coffeePicture != null}"
+                         th:src="@{'/' + ${coffee.coffeePicture}}"
+                         alt="Coffee Picture" />
 
-            <h2 th:text="${coffee.name}"></h2>
-            <p th:text="'₱ ' + ${coffee.price}"></p>
-        </div>
+                    <img th:if="${coffee.coffeePicture == null}"
+                         th:src="@{${coffee.decaf == true} ? '/images/regular.png' : '/images/decaf.png'}"
+                         alt="Default Coffee Picture" />
 
-        <div class="details">
-            <div><strong>Type:</strong> <span th:text="${coffee.type}"></span></div>
-            <div><strong>Size:</strong> <span th:text="${coffee.size}"></span></div>
-            <div><strong>Roast Level:</strong> <span th:text="${coffee.roastLevel}"></span></div>
-            <div><strong>Brew Method:</strong> <span th:text="${coffee.brewMethod}"></span></div>
-            <div><strong>Origin:</strong> <span th:text="${coffee.origin}"></span></div>
-            <div><strong>Stock:</strong> <span th:text="${coffee.stock}"></span></div>
-            <div><strong>Decaf</strong> <span th:text="${coffee.decaf}"></span></div>
-            <div><strong>Flavor Notes:</strong>
-                <ul>
-                    <li th:each="note : ${coffee.flavorNotes}" th:text="${note}"></li>
-                </ul>
+                    <div class="coffeeInfo">
+                        <h2 th:text="${coffee.name}"></h2>
+                        <p th:text="${coffee.decaf} ? 'Decaffeinated' : 'Caffeinated'"><p></p>
+                        <p th:text="'₱ ' + ${coffee.price}"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details">
+                <div><strong>Type:</strong> <span th:text="${coffee.type}"></span></div>
+                <div><strong>Size:</strong> <span th:text="${coffee.size}"></span></div>
+                <div><strong>Roast Level:</strong> <span th:text="${coffee.roastLevel}"></span></div>
+                <div><strong>Brew Method:</strong> <span th:text="${coffee.brewMethod}"></span></div>
+                <div><strong>Origin:</strong> <span th:text="${coffee.origin}"></span></div>
+                <div><strong>Stock:</strong> <span th:text="${coffee.stock}"></span></div>
+                <div><strong>Flavor Notes:</strong>
+                    <ul>
+                        <li th:each="note : ${coffee.flavorNotes}" th:text="${note}"></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        
-        
     </div>
 </body>
 </html>
