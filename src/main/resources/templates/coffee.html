@@ -23,9 +23,15 @@
                          th:src="@{'/' + ${coffee.coffeePicture}}"
                          alt="Coffee Picture" />
 
-                    <img th:if="${coffee.coffeePicture == null}"
-                         th:src="@{${coffee.decaf == true} ? '/images/regular.png' : '/images/decaf.png'}"
-                         alt="Default Coffee Picture" />
+                    <!-- Default image if decaf is true -->
+                    <img th:if="${coffee.coffeePicture == null and coffee.decaf == true}"
+                         th:src="@{/images/decaf.png}"
+                         alt="Default Decaf Picture" />
+
+                    <!-- Default image if decaf is false -->
+                    <img th:if="${coffee.coffeePicture == null and coffee.decaf == false}"
+                         th:src="@{/images/regular.png}"
+                         alt="Default Regular Picture" />
 
                     <div class="coffeeInfo">
                         <h2 th:text="${coffee.name}"></h2>
