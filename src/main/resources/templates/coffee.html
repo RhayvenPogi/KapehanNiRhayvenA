@@ -25,12 +25,12 @@
 
                     <!-- Default image if decaf is true -->
                     <img th:if="${coffee.coffeePicture == null and coffee.decaf == true}"
-                         th:src="@{/images/decaf.png}"
+                         th:src="@{/images/default-decaffeinated.png}"
                          alt="Default Decaf Picture" />
 
                     <!-- Default image if decaf is false -->
                     <img th:if="${coffee.coffeePicture == null and coffee.decaf == false}"
-                         th:src="@{/images/regular.png}"
+                         th:src="@{/images/default-caffeinated.png}"
                          alt="Default Regular Picture" />
 
                     <div class="coffeeInfo">
