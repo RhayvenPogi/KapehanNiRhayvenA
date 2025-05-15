@@ -5,7 +5,14 @@
     --accent-color: rgba(220, 215, 201, 0.6);
     --sidebar-bg: #3F4F44;
     --sidebar-text: #fff;
-    --sidebar-hover: #2C3930;
+    --sidebar-hover: #566f60;
+    --active-bg: #2E3C33;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 body {
@@ -13,13 +20,15 @@ body {
     font-family: var(--font-family);
     background-color: var(--bg-color);
     display: grid;
-    grid-template-columns: 250px 1fr;
-    grid-template-rows: 1fr auto; /* main grows, footer stays at bottom */
+    grid-template-columns: 350px 1fr;
     min-height: 100vh;
-    height: 100vh; /* Force grid to exactly fill viewport */
-    gap: 0; /* Remove any gaps between rows/columns */
 }
 
+.main-content {
+    padding: 0 5vw;
+    width: 100%;
+    margin: 0 auto;
+}
 /* Sidebar */
 .sidebar {
     background-color: var(--sidebar-bg);
@@ -27,58 +36,89 @@ body {
     color: var(--sidebar-text);
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    box-sizing: border-box;
-    height: 100vh; /* makes it fill the whole viewport */
-    position: fixed; /* pin it to the left */
+    height: 100vh; /* full viewport height */
+    position: sticky;
     top: 0;
-    left: 0;
-    width: 250px;
-}
-
-.sidebar h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: var(--sidebar-text);
-}
-
-.sidebar a {
-    color: var(--sidebar-text);
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 10px;
     justify-content: space-between;
 }
 
-.sidebar a svg {
-    flex-shrink: 0;
+.sidebar .footer-text {
+    color: #ccc;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 0 0;
+    user-select: none;
 }
 
-.sidebar a span {
-    margin-left: auto;
+.sidebar .brand {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    user-select: none;
 }
 
-.sidebar a:hover {
+.sidebar .menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* push footer or other content down if added */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar .menu li {
+    color: var(--sidebar-text);
+    padding: 12px 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.sidebar .menu li:hover {
     background-color: var(--sidebar-hover);
 }
 
-/* Main content */
-main {
-    grid-column: 2 / 3;
-    background-color: var(--bg-color);
-    padding: 20px;
-    min-height: 0; /* Prevent overflow */
-    display: flex;
-    flex-direction: column;
+.sidebar .menu li.active {
+    background-color: var(--active-bg);
 }
 
+.sidebar .menu li svg {
+    margin-right: 12px;
+    flex-shrink: 0;
+    fill: var(--sidebar-text); /* ensure svg icons match text color */
+    transition: fill 0.3s ease;
+}
+
+.sidebar .menu li:hover svg {
+    fill: var(--accent-color);
+}
+
+.sidebar .menu li span:last-child {
+    margin-left: auto;
+    color: #ccc;
+    user-select: none;
+}
+
+/* Main content area */
+main {
+    padding: 20px;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Page heading */
 h1 {
     color: var(--text-color);
     font-weight: bold;
-    margin-bottom: 20px;
+    font-size: 3rem;
+    margin: 1vw;
 }
 
+/* Removed footer styles since no footer */

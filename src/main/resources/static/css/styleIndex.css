@@ -21,24 +21,22 @@ body {
     line-height: 1.5;
 }
 
+.sidebar li.active {
+    font-weight: bold;
+    background-color: var(--action-hover-bg); /* Dark background */
+}
+
 /* Main content area */
 .main-content {
-    padding: 4vw;
-    width: 90%; /* or 100% depending on how much space you want on each side */
-    max-width: 100%; /* Ensures it never exceeds the container size */
+    padding: 0 5vw;
+    width: 100%;
     margin: 0 auto;
 }
 
-h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 30px;
-    color: var(--text-color);
-}
 
 .table-container {
     background-color: var(--accent-color);
-    box-shadow: 0 4px 10px var(--shadow-color);
+    box-shadow: 0 0 12px var(--shadow-color);
     border-radius: 10px;
     padding: 20px;
     overflow-x: auto;

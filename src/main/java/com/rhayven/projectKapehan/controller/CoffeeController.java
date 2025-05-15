@@ -48,6 +48,7 @@ public class CoffeeController {
         }
 
         model.addAttribute("coffeeList", coffeeService.searchCoffee(search));
+        model.addAttribute("activeMenu", "home");
         return "index";
     }
 
@@ -82,6 +83,7 @@ public class CoffeeController {
         }
 
         model.addAttribute("coffee", new Coffee());
+        model.addAttribute("activeMenu", "add");
         return "new";
     }
 
@@ -146,6 +148,8 @@ public class CoffeeController {
             model.addAttribute("coffee", coffee);
             return "edit";
         }
+
+
         return "redirect:/"; // Redirect to main page if coffee not found
     }
 
@@ -157,13 +161,12 @@ public class CoffeeController {
      * @return Redirects to coffee list or returns to form if errors.
      */
     @PostMapping("/update")
-    public String storeUpdate(@Valid @ModelAttribute("coffee") Coffee coffee,Model model, HttpSession session, BindingResult result) {
+    public String storeUpdate(@Valid @ModelAttribute("coffee") Coffee coffee, BindingResult result, HttpSession session) {
         KapehanUser user= (KapehanUser) session.getAttribute("user");
         if(user == null) {
             return "redirect:/login";
         }
         if (result.hasErrors()) {
-            model.addAttribute("coffee", coffee);
             System.out.println(result.getAllErrors());
             return "edit"; // return to edit form if errors are present
         }

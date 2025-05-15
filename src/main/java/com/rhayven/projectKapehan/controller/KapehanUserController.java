@@ -33,7 +33,7 @@ public class KapehanUserController {
     @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute("user", new KapehanUser());
-        return "login";
+        return "components/login";
     }
 
     /**
@@ -51,7 +51,7 @@ public class KapehanUserController {
     @PostMapping("/login")
     public String login(@ModelAttribute("user") @Valid KapehanUser formUser, BindingResult bindingResult, HttpSession session, Model model) {
         if (bindingResult.hasErrors()) {
-            return "login";
+            return "components/login";
         }
 
         KapehanUser foundUser = kapehanUserService.findByUsername(formUser.getUsername());
@@ -62,7 +62,7 @@ public class KapehanUserController {
             String error = "Invalid credentials";
             model.addAttribute("error", error);
         }
-        return "login";
+        return "components/login";
     }
 
     /**

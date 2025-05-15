@@ -21,21 +21,18 @@ body {
     line-height: 1.5;
 }
 
+.sidebar li.active {
+    font-weight: bold;
+    background-color: var(--button-hover-bg); /* Dark background */
+}
+
 /* Main content area */
 .main-content {
-    padding: 4vw;
-    width: 90%; /* or 100% depending on how much space you want on each side */
-    max-width: 100%; /* Ensures it never exceeds the container size */
+    padding: 0 5vw;
+    width: 100%;
     margin: 0 auto;
 }
 
-/* Heading styles */
-h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 30px;
-    color: var(--text-color);
-}
 
 /* Form container */
 form {
@@ -74,12 +71,20 @@ input[type="checkbox"] {
     margin-right: 8px;
 }
 
+/* Always keep placeholder text left-aligned */
+input::placeholder,
+select::placeholder {
+    text-align: left !important;
+    direction: ltr !important;
+}
+
 /* Error styling */
 input.error,
 select.error {
     border-color: red;
     background-color: #ffe6e6;
 }
+
 
 .error {
     color: red;

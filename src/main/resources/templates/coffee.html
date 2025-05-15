@@ -1,35 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/master :: html(content=~{::div}, link=~{::link}, title=~{::title})}">
 <head>
     <meta charset="UTF-8">
     <title>View Coffee | [[${coffee.name}]]</title>
     <link rel="stylesheet" th:href="@{/css/details.css}">
 </head>
 <body>
-    <div class="sidebar">
-        <h2>Kapehan Menu</h2>
-        <a href="/" th:href="@{/}">Home</a>
-        <a href="/add" th:href="@{/add}">Add Coffee</a>
-        <a href="#">Settings</a>
-    </div>
-    <div>
-    <h1>Coffee Details:</h1>
-        <div class="main-content">
 
+    <div class="main-content">
+        <h1>Coffee Details:</h1>
 
+        <div class="container">
             <div class="coffeePicture">
                 <div class="coffeeHeader">
-                    <img th:if="${coffee.coffeePicture != null}"
+
+                    <!-- Show actual uploaded picture -->
+                    <img th:if="${!#strings.isEmpty(coffee.coffeePicture) and coffee.coffeePicture != 'null'}"
                          th:src="@{'/' + ${coffee.coffeePicture}}"
                          alt="Coffee Picture" />
 
-                    <!-- Default image if decaf is true -->
-                    <img th:if="${coffee.coffeePicture == null and coffee.decaf == true}"
+                    <!-- Default image if no picture and decaf -->
+                    <img th:if="${(#strings.isEmpty(coffee.coffeePicture) or coffee.coffeePicture == 'null') and coffee.decaf}"
                          th:src="@{/images/default-decaffeinated.png}"
                          alt="Default Decaf Picture" />
 
-                    <!-- Default image if decaf is false -->
-                    <img th:if="${coffee.coffeePicture == null and coffee.decaf == false}"
+                    <!-- Default image if no picture and not decaf -->
+                    <img th:if="${(#strings.isEmpty(coffee.coffeePicture) or coffee.coffeePicture == 'null') and !coffee.decaf}"
                          th:src="@{/images/default-caffeinated.png}"
                          alt="Default Regular Picture" />
 
@@ -55,6 +51,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </body>
 </html>
