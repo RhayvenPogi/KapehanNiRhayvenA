@@ -154,7 +154,7 @@ form button:hover {
 
 /* File input for coffee picture */
 #coffeePicture-area input[type="file"] {
-    background-color: #fff;
+    background-color: white;  /* Use white or light background for input */
     padding: 12px 20px;
     border-radius: 8px;
     border: 1px solid var(--border-color);
@@ -164,6 +164,7 @@ form button:hover {
     font-size: 1rem;
     cursor: pointer;
     transition: border-color 0.3s ease, background-color 0.3s ease;
+    color: var(--text-color);
 }
 
 /* Hover effect on file input */
@@ -171,7 +172,6 @@ form button:hover {
     background-color: #f8f8f8;
     border-color: var(--accent-color);
 }
-
 /* Responsive layout */
 @media (max-width: 768px) {
     .main-content {

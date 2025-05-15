@@ -31,7 +31,7 @@
 
                     <div class="coffeeInfo">
                         <h2 th:text="${coffee.name}"></h2>
-                        <p th:text="${coffee.decaf} ? 'Decaffeinated' : 'Caffeinated'"><p></p>
+                        <p th:text="${coffee.decaf} ? 'Decaffeinated' : 'Caffeinated'"></p>
                         <p th:text="'₱ ' + ${coffee.price}"></p>
                     </div>
                 </div>
@@ -51,7 +51,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </body>
 </html>

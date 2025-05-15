@@ -56,6 +56,13 @@ body {
     margin-bottom: 30px;
     text-align: center;
     user-select: none;
+    display: flex;
+}
+.brand img{
+    width: 37px;
+    height: auto;
+    border-radius: 90%;
+    margin-right: 10px;
 }
 
 .sidebar .menu ul {

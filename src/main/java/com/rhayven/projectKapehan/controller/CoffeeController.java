@@ -52,6 +52,18 @@ public class CoffeeController {
         return "index";
     }
 
+    @GetMapping("/menu")
+    public String menu(@RequestParam(defaultValue = "") String search,  HttpSession session, Model model) {
+        KapehanUser user= (KapehanUser) session.getAttribute("user");
+        if(user == null) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute("coffeeList", coffeeService.searchCoffee(search));
+        model.addAttribute("activeMenu", "menu");
+        return "menu";
+    }
+
     /**
      * Deletes a coffee by its ID.
      *
