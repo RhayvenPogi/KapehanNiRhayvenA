@@ -1,66 +1,130 @@
+/* Reset and base styling */
 body {
-    font-family: "Arial", sans-serif;
-    background-color: #f9f9f9;
-    color: #3F4F44;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+}
+
+/* Grid container */
+.grid-container {
+    display: grid;
+    grid-template-columns: 60% 1fr;
+    height: 100vh;
+}
+
+/* Left panel design */
+.left-panel {
+    background-color:#16291c;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 40% 40% 0;
+}
+
+.welcome-content {
+    text-align: center;
+    max-width: 400px;
+}
+
+.welcome-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.welcome-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Right panel (login) */
+.right-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 2rem;
 }
 
 .login-container {
-    background-color: #ffffff;
-    padding: 2rem 3rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
     width: 100%;
+    max-width: 400px;
 }
 
-h1 {
+.login-container h1 {
     text-align: center;
-    margin-bottom: 1.5rem;
-    color: #3F4F44;
+    margin-bottom: 2rem;
+    color: #16291c;
+    font-size: 3rem;
 }
 
 form div {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
 label {
     display: block;
-    margin-bottom: 0.4rem;
-    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #444;
 }
 
 input[type="text"],
 input[type="password"] {
     width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 0.65rem;
     font-size: 1rem;
-    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: 0.3s ease;
 }
 
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #16291c;
+    outline: none;
+    box-shadow: 0 0 5px rgba(162, 123, 92, 0.4);
+}
+
+/* Button */
 button {
-    width: 100%;
-    background-color: #A27B5C;
-    color: white;
-    border: none;
+    width: 106%;
     padding: 0.75rem;
     font-size: 1rem;
-    border-radius: 4px;
+    background-color: #16291c;
+    color: white;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+
 }
 
 button:hover {
-    background-color: #8a6346;
+    background-color: #0b120d;
 }
 
+/* Error message */
 .form-error {
-    color: #b81404;
-    font-size: 0.9rem;
+    color: #c0392b;
+    font-size: 0.85rem;
     margin-top: 0.3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .left-panel {
+        display: none;
+    }
+
+    .right-panel {
+        padding: 2rem 1.5rem;
+    }
 }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/master :: html(
+        title=~{::title},
+        link=~{::link},
+        content=~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/styleCatalog.css}">
+</head>
+<body>
+<section class="main-content">
+    <h1>Coffee Catalog</h1>
+
+    <form method="get" th:action="@{/}" class="search-bar">
+        <input type="text" name="search" placeholder="Search..." th:value="${param.search}">
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="catalog-grid">
+        <div class="coffee-card" th:each="coffee : ${coffeeList}">
+            <div> <!-- Show actual uploaded picture -->
+                <img th:if="${!#strings.isEmpty(coffee.coffeePicture) and coffee.coffeePicture != 'null'}"
+                     th:src="@{'/' + ${coffee.coffeePicture}}"
+                     alt="Coffee Picture" />
+
+                <!-- Default image if no picture and decaf -->
+                <img th:if="${(#strings.isEmpty(coffee.coffeePicture) or coffee.coffeePicture == 'null') and coffee.decaf}"
+                     th:src="@{/images/default-decaffeinated.png}"
+                     alt="Default Decaf Picture" />
+
+                <!-- Default image if no picture and not decaf -->
+                <img th:if="${(#strings.isEmpty(coffee.coffeePicture) or coffee.coffeePicture == 'null') and !coffee.decaf}"
+                     th:src="@{/images/default-caffeinated.png}"
+                     alt="Default Regular Picture" />
+            </div>
+            <h2 th:text="${coffee.name}">Coffee Name</h2>
+            <p><strong>Type:</strong> <span th:text="${coffee.type}"></span></p>
+            <p><strong>Size:</strong> <span th:text="${coffee.size}"></span></p>
+            <p><strong>Price:</strong> Php <span th:text="${coffee.price}"></span></p>
+            <p><strong>Roast Level:</strong> <span th:text="${coffee.roastLevel}"></span></p>
+            <p><strong>Origin:</strong> <span th:text="${coffee.origin}"></span></p>
+            <p><strong>Decaf:</strong> <span th:text="${coffee.decaf} ? 'Yes' : 'No'"></span></p>
+            <p><strong>Stock:</strong> <span th:text="${coffee.stock}"></span></p>
+            <p><strong>Flavor Notes:</strong> <span th:text="${#strings.listJoin(coffee.flavorNotes, ', ')}"></span></p>
+            <p><strong>Brew Method:</strong> <span th:text="${coffee.brewMethod}"></span></p>
+
+            <div class="actions">
+                <a th:href="@{/coffee/{id}(id=${coffee.id})}" class="view-btn">View</a>
+                <a th:href="@{/edit(id=${coffee.id})}" class="edit-btn">Edit</a>
+                <a th:href="@{/delete(id=${coffee.id})}" class="delete-btn" onclick="return confirm('Are you sure?');">Delete</a>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
