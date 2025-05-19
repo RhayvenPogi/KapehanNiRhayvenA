@@ -2,6 +2,7 @@ package com.rhayven.projectKapehan.service;
 
 import com.rhayven.projectKapehan.models.Coffee;
 import org.springframework.stereotype.Service;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,22 +11,33 @@ import java.util.stream.Collectors;
 
 /**
  * Service class for managing coffee records.
- * Handles CRUD operations and file persistence.
+ * Provides CRUD operations, search functionality, and file persistence using CSV.
  */
 @Service
 public class CoffeeService {
     private ArrayList<Coffee> coffeeList;
     private final String FILE_NAME = "database.csv";
 
+    /**
+     * Initializes the coffee list and loads data from the CSV file.
+     */
     public CoffeeService() {
         coffeeList = new ArrayList<>();
         readFromDisk();
     }
 
+    /**
+     * Retrieves all coffee records.
+     * @return list of all coffees
+     */
     public ArrayList<Coffee> getCoffees() {
         return coffeeList;
     }
 
+    /**
+     * Deletes a coffee by ID and reassigns IDs sequentially.
+     * @param id the ID of the coffee to delete
+     */
     public void deleteCoffee(int id) {
         coffeeList.removeIf(coffee -> coffee.getId() == id);
         for (int i = 0; i < coffeeList.size(); i++) {
@@ -34,10 +46,16 @@ public class CoffeeService {
         writeToDisk();
     }
 
+    /**
+     * Searches for coffee records that match the given keyword in any field.
+     * @param keyword the keyword to search
+     * @return list of matching coffee records
+     */
     public List<Coffee> searchCoffee(String keyword) {
-        if (keyword.trim().isEmpty()) {
+        if (keyword == null || keyword.trim().isEmpty()) {
             return coffeeList;
         }
+
         return coffeeList.stream()
                 .filter(coffee -> String.valueOf(coffee.getId()).equals(keyword)
                         || coffee.getName().toLowerCase().contains(keyword.toLowerCase())
@@ -48,11 +66,16 @@ public class CoffeeService {
                         || coffee.getBrewMethod().toLowerCase().contains(keyword.toLowerCase())
                         || String.join(" ", coffee.getFlavorNotes()).toLowerCase().contains(keyword.toLowerCase())
                         || String.valueOf(coffee.getPrice()).contains(keyword)
-                        || (List.of("true", "decaf", "yes").contains(keyword.toLowerCase()) && coffee.isDecaf())
-                        || (List.of("false", "regular", "no").contains(keyword.toLowerCase()) && !coffee.isDecaf()))
+                        || (List.of("true", "decaffeinated", "decaf", "yes").contains(keyword.toLowerCase()) && coffee.isDecaf())
+                        || (List.of("false", "caffeinated", "regular", "no").contains(keyword.toLowerCase()) && !coffee.isDecaf()))
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Gets a coffee by its ID.
+     * @param id the coffee ID
+     * @return matching coffee or null if not found
+     */
     public Coffee getCoffee(int id) {
         for (Coffee coffee : coffeeList) {
             if (coffee.getId() == id)
@@ -61,6 +84,11 @@ public class CoffeeService {
         return null;
     }
 
+    /**
+     * Updates an existing coffee record.
+     * @param id the ID of the coffee to update
+     * @param update the updated coffee object
+     */
     public void updateCoffee(int id, Coffee update) {
         for (int i = 0; i < coffeeList.size(); i++) {
             if (coffeeList.get(i).getId() == id) {
@@ -71,12 +99,20 @@ public class CoffeeService {
         }
     }
 
+    /**
+     * Adds a new coffee with the next available ID.
+     * @param coffee the coffee object to add
+     */
     public void addCoffee(Coffee coffee) {
         coffee.setId(getLastId() + 1);
         coffeeList.add(coffee);
         writeToDisk();
     }
 
+    /**
+     * Gets the highest current coffee ID.
+     * @return the last coffee ID, or 0 if list is empty
+     */
     public int getLastId() {
         if (coffeeList.isEmpty()) {
             return 0;
@@ -84,6 +120,9 @@ public class CoffeeService {
         return coffeeList.getLast().getId();
     }
 
+    /**
+     * Saves the current coffee list to disk as CSV.
+     */
     public void writeToDisk() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME))) {
             for (Coffee coffee : coffeeList) {
@@ -98,8 +137,7 @@ public class CoffeeService {
                         + coffee.getStock() + ","
                         + String.join("|", coffee.getFlavorNotes()) + ","
                         + coffee.getBrewMethod() + ","
-                        + coffee.getCoffeePicture()
-                );
+                        + coffee.getCoffeePicture());
                 bw.newLine();
             }
         } catch (IOException e) {
@@ -107,6 +145,9 @@ public class CoffeeService {
         }
     }
 
+    /**
+     * Loads coffee records from the CSV file.
+     */
     public void readFromDisk() {
         File file = new File(FILE_NAME);
         if (!file.exists()) {
@@ -118,7 +159,7 @@ public class CoffeeService {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data.length < 11) continue;
+                if (data.length < 12) continue;
 
                 Coffee coffee = new Coffee();
                 coffee.setId(Integer.parseInt(data[0]));

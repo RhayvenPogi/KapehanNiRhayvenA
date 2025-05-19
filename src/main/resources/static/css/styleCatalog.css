@@ -1,18 +1,16 @@
+/* ==== Root CSS Variables (Theme Settings) ==== */
 :root {
     --font-family: "Arial", sans-serif;
     --bg-color: #f9f9f9;
-    --text-color: #3F4F44;
-    --accent-color: rgba(220, 215, 201, 0.6);
+    --text-color: #fffff0;
+    --accent-color: #3F4F44FF;
     --button-bg: #A27B5C;
     --button-hover-bg: #8a6346;
-    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.94);
     --border-color: #ccc;
-    --danger-bg: #b81404;
-    --danger-hover-bg: #7c0e04;
-    --action-bg: #3F4F44;
-    --action-hover-bg: #2C3930;
 }
 
+/* ==== Global Styles ==== */
 body {
     margin: 0;
     font-family: var(--font-family);
@@ -27,13 +25,15 @@ body {
     margin: 0 auto;
 }
 
+/* ==== Headings ==== */
 h1 {
-    font-size: 2.5rem;
-    color: var(--text-color);
+    font-size: 3rem;
+    color: var(--accent-color);
     margin-bottom: 20px;
-    text-align: center;
+    font-weight: bold;
 }
 
+/* ==== Search Bar Styling ==== */
 .search-bar {
     display: flex;
     justify-content: center;
@@ -66,96 +66,76 @@ h1 {
     background-color: var(--button-hover-bg);
 }
 
+/* ==== Coffee Catalog Grid ==== */
 .catalog-grid {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
 }
 
+/* ==== Coffee Card Styling ==== */
 .coffee-card {
     background-color: var(--accent-color);
     box-shadow: 0 4px 12px var(--shadow-color);
-    padding: 20px;
+    padding: 0;
     border-radius: 10px;
+    width: 200px;
     transition: transform 0.2s ease;
+    flex-shrink: 0;
 }
 
 .coffee-card:hover {
     transform: translateY(-5px);
 }
 
+/* ==== Coffee Card Text ==== */
 .coffee-card h2 {
-    margin-top: 0;
+    margin: 0;
     font-size: 1.6rem;
-    color: var(--action-bg);
-    margin-bottom: 10px;
+    text-align: center;
 }
 
 .coffee-card p {
     margin: 5px 0;
     font-size: 14px;
+    text-align: center;
 }
 
-.actions {
-    margin-top: 15px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+/* ==== Image Wrapper ==== */
+.image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 9px 9px 0 0;
 }
 
-.actions a {
-    text-decoration: none;
-    padding: 8px 14px;
-    font-size: 14px;
-    color: white;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    display: inline-block;
-}
-
-.view-btn {
-    background-color: darkcyan;
-}
-
-.view-btn:hover {
-    background-color: #016868;
-}
-
-.edit-btn {
-    background-color: var(--action-bg);
-}
-
-.edit-btn:hover {
-    background-color: var(--action-hover-bg);
-}
-
-.delete-btn {
-    background-color: var(--danger-bg);
-}
-
-.delete-btn:hover {
-    background-color: var(--danger-hover-bg);
-}
-
-@media (max-width: 600px) {
+/* ==== Responsive Design ==== */
+@media (max-width: 768px) {
     .search-bar {
         flex-direction: column;
         align-items: stretch;
     }
 
-    .search-bar input[type="text"] {
-        width: 100%;
-    }
-
+    .search-bar input[type="text"],
     .search-bar button {
         width: 100%;
     }
 
-    .actions {
-        flex-direction: column;
+    .coffee-card {
+        padding: 0;
+        max-width: min-content;
     }
 
-    .actions a {
-        width: 100%;
-        text-align: center;
+    .image img {
+        width: 150px;
+        max-height: 150px;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    p {
+        font-size: 1rem;
     }
 }

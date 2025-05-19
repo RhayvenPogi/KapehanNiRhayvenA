@@ -1,3 +1,4 @@
+/* ==== Root Theme Variables ==== */
 :root {
     --font-family: "Arial", sans-serif;
     --bg-color: #f9f9f9;
@@ -13,6 +14,7 @@
     --action-hover-bg: #2C3930;
 }
 
+/* ==== Global Styles ==== */
 body {
     margin: 0;
     font-family: var(--font-family);
@@ -21,19 +23,20 @@ body {
     line-height: 1.5;
 }
 
+/* ==== Sidebar Styling ==== */
 .sidebar li.active {
     font-weight: bold;
-    background-color: var(--action-hover-bg); /* Dark background */
+    background-color: var(--action-hover-bg);
 }
 
-/* Main content area */
+/* ==== Main Content Area ==== */
 .main-content {
     padding: 0 5vw;
     width: 100%;
     margin: 0 auto;
 }
 
-
+/* ==== Table Container ==== */
 .table-container {
     background-color: var(--accent-color);
     box-shadow: 0 0 12px var(--shadow-color);
@@ -42,6 +45,7 @@ body {
     overflow-x: auto;
 }
 
+/* ==== Form Styling ==== */
 form {
     display: flex;
     flex-wrap: wrap;
@@ -65,47 +69,57 @@ form button {
     border-radius: 5px;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 form button:hover {
     background-color: var(--button-hover-bg);
 }
 
+/* ==== Table Styling ==== */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     min-width: 800px;
+    font-size: 16px;
 }
 
 table th, table td {
     padding: 12px;
-    border: 1px solid var(--text-color);
+    border: 1px solid var(--border-color);
     text-align: center;
     vertical-align: middle;
 }
 
 table th {
-    background-color: var(--button-bg);
+    background-color: var(--text-color);
     color: white;
     font-weight: bold;
+}
+
+/* ==== Action Buttons and Links ==== */
+.action-links {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .action-links a {
     color: white;
     text-decoration: none;
-    margin: 4px 0;
     padding: 6px 10px;
     font-size: 14px;
-    display: inline-block;
     border-radius: 8px;
-    width: 60px;
+    min-width: 60px;
+    text-align: center;
+    display: inline-block;
 }
 
 .edit-btn {
     background-color: var(--action-bg);
 }
-
 .edit-btn:hover {
     background-color: var(--action-hover-bg);
 }
@@ -113,26 +127,48 @@ table th {
 .delete-btn {
     background-color: var(--danger-bg);
 }
-
 .delete-btn:hover {
     background-color: var(--danger-hover-bg);
 }
 
 .view-btn {
-    width: 50px;
     background-color: darkcyan;
 }
-
 .view-btn:hover {
     background-color: #016868;
 }
 
-@media (max-width: 900px) {
+/* ==== Responsive Styling ==== */
+@media (max-width: 768px) {
     table {
         font-size: 14px;
+        min-width: 100%;
+    }
+
+    form input[type="text"] {
+        min-width: 100%;
+    }
+
+    .action-links {
+        flex-direction: column;
+        gap: 4px;
     }
 
     .action-links a {
         font-size: 12px;
+        min-width: unset;
+        width: 100%;
+        padding: 8px 0;
+    }
+
+    /* Ensuring consistent behavior for reused class */
+    .search-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-bar input[type="text"],
+    .search-bar button {
+        width: 100%;
     }
 }

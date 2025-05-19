@@ -14,7 +14,7 @@
         <div class="sidebar">
             <div>
                 <div class="brand">
-                    <img src="images/logo/logo.jpg" alt="logo">
+                    <img th:src="@{/images/logo/logo.jpg}" alt="logo">
                     <span>Kapehan</span>
                 </div>
                 <div class="menu">
@@ -47,7 +47,19 @@
             });
 
         });
+
+        document.getElementById('coffeePicture').addEventListener('change', function() {
+            const fileNameSpan = document.getElementById('file-name');
+            if (this.files.length > 0) {
+                fileNameSpan.textContent = this.files[0].name;
+            } else {
+                fileNameSpan.textContent = 'No file chosen';
+            }
+        });
     </script>
+
+
+
 
 </body>
 </html>

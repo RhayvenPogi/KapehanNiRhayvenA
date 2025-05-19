@@ -1,3 +1,4 @@
+/* Root variables for consistent theming */
 :root {
     --font-family: "Arial", sans-serif;
     --bg-color: #f9f9f9;
@@ -9,12 +10,14 @@
     --active-bg: #2E3C33;
 }
 
+/* Apply box-sizing to all elements for easier layout control */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
+/* Global body styles */
 body {
     margin: 0;
     font-family: var(--font-family);
@@ -23,13 +26,14 @@ body {
     line-height: 1.5;
 }
 
+/* Main content wrapper */
 .main-content {
     padding: 0 5vw;
     width: 100%;
     margin: 0 auto;
 }
 
-/* Container with subtle translucent background and shadow */
+/* Content container with soft background and shadow */
 .container {
     background: var(--accent-color);
     padding: 2rem;
@@ -37,7 +41,7 @@ body {
     box-shadow: 0 0 12px rgba(46, 60, 51, 0.5);
 }
 
-/* Coffee header (image + info) */
+/* Header section with coffee image and basic info */
 .coffeeHeader {
     display: flex;
     align-items: center;
@@ -50,6 +54,7 @@ body {
     border-bottom: 5px solid var(--active-bg);
 }
 
+/* Circular coffee image styling */
 .coffeeHeader img {
     width: 140px;
     height: 140px;
@@ -58,6 +63,7 @@ body {
     border: 3px solid var(--sidebar-text);
 }
 
+/* Coffee information text */
 .coffeeInfo {
     display: flex;
     flex-direction: column;
@@ -76,7 +82,7 @@ body {
     color: var(--sidebar-text);
 }
 
-/* Details grid */
+/* Detail boxes laid out in a flexible grid */
 .details {
     display: flex;
     flex-wrap: wrap;
@@ -86,6 +92,7 @@ body {
     margin-top: 1rem;
 }
 
+/* Individual detail cards */
 .details div {
     background-color: var(--sidebar-bg);
     padding: 1rem;
@@ -103,6 +110,7 @@ body {
     align-items: center;
 }
 
+/* Bullet list for attributes */
 .details ul {
     margin: 0.5rem 0 0 1rem;
     padding: 0;
@@ -113,8 +121,8 @@ body {
     list-style-type: disc;
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
+/* Responsive */
+@media (max-width: 768px) {
     body {
         display: block;
     }

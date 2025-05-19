@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/master :: html(content=~{::div}, link=~{::link}, title=~{::title})}">
 <head>
   <title>Edit [[${coffee.name}]]</title>
-  <link rel="stylesheet" th:href="@{/css/styleEdit.css}">
+  <link rel="stylesheet" th:href="@{/css/styleForm.css}">
 </head>
 <body>
 
@@ -13,6 +13,7 @@
   <form th:action="@{/update}" th:object="${coffee}" method="post">
 
     <input type="hidden" th:field="*{id}"/>
+    <input type="hidden" th:field="*{coffeePicture}"/>
 
     <!-- Coffee Name -->
     <div id="name-area">
@@ -134,6 +135,7 @@
       </select>
       <div class="error" th:if="${#fields.hasErrors('brewMethod')}" th:errors="*{brewMethod}"></div>
     </div>
+
 
 
     <!-- Buttons -->

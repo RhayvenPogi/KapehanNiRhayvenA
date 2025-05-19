@@ -6,22 +6,28 @@
         link=~{::link},
         content=~{::section})}">
 <head>
+    <!-- Page title and custom styles -->
     <title>Coffee Dashboard</title>
     <link rel="stylesheet" th:href="@{/css/styleIndex.css}">
 </head>
 <body>
+
+<!-- Main content section -->
 <section class="main-content">
     <h1>Available Coffees</h1>
 
-    <form method="get" th:action="@{/}">
+    <!-- Search form -->
+    <form method="get" th:action="@{/}" class="search-bar">
         <input type="text" name="search" placeholder="Search..." th:value="${param.search}">
         <button type="submit">Search</button>
     </form>
 
+    <!-- Coffee list table -->
     <div class="table-container">
         <table>
             <thead>
             <tr>
+                <!-- Table headers -->
                 <th>#</th>
                 <th>Coffee Name</th>
                 <th>Type</th>
@@ -37,6 +43,7 @@
             </tr>
             </thead>
             <tbody>
+            <!-- Loop through coffeeList and render each coffee entry -->
             <tr th:each="coffee, stat : ${coffeeList}">
                 <td th:text="${stat.index + 1}"></td>
                 <td th:text="${coffee.name}"></td>
@@ -49,6 +56,8 @@
                 <td th:text="${coffee.stock}"></td>
                 <td th:text="${#strings.listJoin(coffee.flavorNotes, ', ')}"></td>
                 <td th:text="${coffee.brewMethod}"></td>
+
+                <!-- Action links for view, edit, and delete -->
                 <td class="action-links">
                     <a th:href="@{/coffee/{id}(id=${coffee.id})}" class="view-btn">View</a>
                     <a th:href="@{/edit(id=${coffee.id})}" class="edit-btn">Edit</a>

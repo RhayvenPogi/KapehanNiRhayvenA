@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/master :: html(content=~{::div}, link=~{::link}, title=~{::title})}">
 <head>
     <title>Add New Coffee</title>
-    <link rel="stylesheet" th:href="@{/css/styleAdd.css}">
+    <link rel="stylesheet" th:href="@{/css/styleForm.css}">
 </head>
 <body>
 
@@ -16,7 +16,7 @@
         <!-- Coffee Name -->
         <div id="name-area">
             <label for="name">Coffee Name:</label>
-            <input type="text" id="name" th:field="*{name}" placeholder="Enter coffee name"
+            <input type="text" id="name" th:field="*{name}" placeholder="Enter coffee name..."
                    th:classappend="${#fields.hasErrors('name')} ? 'error' : ''"/>
             <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
         </div>
@@ -139,9 +139,13 @@
         <!-- Coffee Picture -->
         <div id="coffeePicture-area">
             <label for="coffeePicture">Coffee Picture:</label>
-            <input type="file" id="coffeePicture" name="coffeePic"
-                   accept="image/png, image/jpeg, image/jpg"/>
+            <div class="file-upload-container">
+                <label for="coffeePicture" class="custom-upload-button">Choose File</label>
+                <span id="file-name">No file chosen</span>
+            </div>
+            <input type="file" id="coffeePicture" name="coffeePic" hidden />
         </div>
+
 
         <!-- Form Buttons -->
         <div id="form-buttons-area">
@@ -151,6 +155,8 @@
 
     </form>
 </div>
+
+
 
 </body>
 </html>

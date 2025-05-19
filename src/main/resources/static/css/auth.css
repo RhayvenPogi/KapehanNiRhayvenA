@@ -27,18 +27,41 @@ body {
 
 .welcome-content {
     text-align: center;
-    max-width: 400px;
+    max-width: 500px;
+    padding: 1rem;
 }
 
 .welcome-content h2 {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     font-weight: 600;
 }
 
+.welcome-content h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}
+
+.welcome-content h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
 .welcome-content p {
-    font-size: 1.1rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.welcome-content {
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Right panel (login) */
@@ -52,6 +75,7 @@ body {
 .login-container {
     width: 100%;
     max-width: 400px;
+    padding-bottom: 60px;
 }
 
 .login-container h1 {
@@ -115,7 +139,7 @@ button:hover {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .grid-container {
         grid-template-columns: 1fr;
     }

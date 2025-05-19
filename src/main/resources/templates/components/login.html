@@ -3,40 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Link to external stylesheet -->
     <link rel="stylesheet" th:href="@{/css/auth.css}" />
+
     <title>Log In</title>
 </head>
 
-
 <body>
 <div class="grid-container">
+
+    <!-- Left welcome panel with branding message -->
     <div class="left-panel">
         <div class="welcome-content">
             <h2>Welcome Back!</h2>
+            <h3>Mabuhay! Welcome to Kapehan</h3>
+            <h4>Your cozy corner for stories, brews, and good vibes.</h4>
             <p>Log in to access your account and explore more features.</p>
         </div>
     </div>
 
+    <!-- Right panel with login form -->
     <div class="right-panel">
         <div class="login-container">
             <h1>Login</h1>
+
+            <!-- Login form bound to 'user' object -->
             <form action="/login" method="POST" th:object="${user}">
+
+                <!-- Username input -->
                 <div>
                     <label for="username">User Name</label>
                     <input type="text" th:field="*{username}" id="username" />
+
+                    <!-- Username field error -->
                     <p class="form-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
                 </div>
+
+                <!-- Password input -->
                 <div>
                     <label for="password">Password</label>
                     <input type="password" th:field="*{password}" id="password" />
+
+                    <!-- Password field error -->
                     <p class="form-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
                 </div>
+
+                <!-- General login error (e.g., incorrect credentials) -->
                 <p class="form-error" th:if="${error}" th:text="${error}"></p>
+
+                <!-- Submit login form -->
                 <button type="submit">Login</button>
             </form>
         </div>
     </div>
 </div>
 </body>
-
 </html>
