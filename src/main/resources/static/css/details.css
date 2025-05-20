@@ -121,11 +121,28 @@ body {
     list-style-type: disc;
 }
 
+/* Style the back link like a button and center it */
+.container a.back {
+    margin: 20px auto 0;  /* vertical margin + auto horizontal to center */
+    padding: 14px 24px;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text); /* White */
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    display: block;          /* make block to allow margin auto centering */
+    width: fit-content;      /* shrink width to content */
+}
+
+.container a.back:hover {
+    background-color: var(--active-bg);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
-    body {
-        display: block;
-    }
     .details {
         flex-direction: column;
         gap: 1rem;

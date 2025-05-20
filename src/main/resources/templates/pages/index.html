@@ -14,7 +14,7 @@
 
 <!-- Main content section -->
 <section class="main-content">
-    <h1>Available Coffees</h1>
+    <h1>Coffee List</h1>
 
     <!-- Search form -->
     <form method="get" th:action="@{/}" class="search-bar">
@@ -24,49 +24,53 @@
 
     <!-- Coffee list table -->
     <div class="table-container">
-        <table>
-            <thead>
-            <tr>
-                <!-- Table headers -->
-                <th>#</th>
-                <th>Coffee Name</th>
-                <th>Type</th>
-                <th>Size</th>
-                <th>Price</th>
-                <th>Roast Level</th>
-                <th>Origin</th>
-                <th>Decaf</th>
-                <th>Stock</th>
-                <th>Flavor Notes</th>
-                <th>Brew Method</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- Loop through coffeeList and render each coffee entry -->
-            <tr th:each="coffee, stat : ${coffeeList}">
-                <td th:text="${stat.index + 1}"></td>
-                <td th:text="${coffee.name}"></td>
-                <td th:text="${coffee.type}"></td>
-                <td th:text="${coffee.size}"></td>
-                <td th:text="'Php ' + ${coffee.price}"></td>
-                <td th:text="${coffee.roastLevel}"></td>
-                <td th:text="${coffee.origin}"></td>
-                <td th:text="${coffee.decaf} ? 'Yes' : 'No'"></td>
-                <td th:text="${coffee.stock}"></td>
-                <td th:text="${#strings.listJoin(coffee.flavorNotes, ', ')}"></td>
-                <td th:text="${coffee.brewMethod}"></td>
+        <!-- Adding a wrapper div around the table for scroll -->
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <!-- Table headers -->
+                    <th>#</th>
+                    <th>Coffee Name</th>
+                    <th>Type</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Roast Level</th>
+                    <th>Origin</th>
+                    <th>Decaf</th>
+                    <th>Stock</th>
+                    <th>Flavor Notes</th>
+                    <th>Brew Method</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Loop through coffeeList and render each coffee entry -->
+                <tr th:each="coffee, stat : ${coffeeList}">
+                    <td th:text="${stat.index + 1}"></td>
+                    <td th:text="${coffee.name}"></td>
+                    <td th:text="${coffee.type}"></td>
+                    <td th:text="${coffee.size}"></td>
+                    <td th:text="'Php ' + ${coffee.price}"></td>
+                    <td th:text="${coffee.roastLevel}"></td>
+                    <td th:text="${coffee.origin}"></td>
+                    <td th:text="${coffee.decaf} ? 'Yes' : 'No'"></td>
+                    <td th:text="${coffee.stock}"></td>
+                    <td th:text="${#strings.listJoin(coffee.flavorNotes, ', ')}"></td>
+                    <td th:text="${coffee.brewMethod}"></td>
 
-                <!-- Action links for view, edit, and delete -->
-                <td class="action-links">
-                    <a th:href="@{/coffee/{id}(id=${coffee.id})}" class="view-btn">View</a>
-                    <a th:href="@{/edit(id=${coffee.id})}" class="edit-btn">Edit</a>
-                    <a th:href="@{/delete(id=${coffee.id})}" class="delete-btn" onclick="return confirm('Are you sure?');">Delete</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                    <!-- Action links for view, edit, and delete -->
+                    <td class="action-links">
+                        <a th:href="@{/coffee/{id}(id=${coffee.id})}" class="view-btn">View</a>
+                        <a th:href="@{/edit(id=${coffee.id})}" class="edit-btn">Edit</a>
+                        <a th:href="@{/delete(id=${coffee.id})}" class="delete-btn" onclick="return confirm('Are you sure?');">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </section>
+
 </body>
 </html>

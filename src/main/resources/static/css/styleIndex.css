@@ -23,17 +23,18 @@ body {
     line-height: 1.5;
 }
 
-/* ==== Sidebar Styling ==== */
-.sidebar li.active {
-    font-weight: bold;
-    background-color: var(--action-hover-bg);
+/* ==== Main Layout Compatibility ==== */
+main {
+    overflow-x: auto; /* Allow scrolling inside main */
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-/* ==== Main Content Area ==== */
 .main-content {
-    padding: 0 5vw;
     width: 100%;
     margin: 0 auto;
+    padding: 0;
 }
 
 /* ==== Table Container ==== */
@@ -42,11 +43,19 @@ body {
     box-shadow: 0 0 12px var(--shadow-color);
     border-radius: 10px;
     padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
     overflow-x: auto;
 }
 
-/* ==== Form Styling ==== */
-form {
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ==== Search Form ==== */
+form.search-bar {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -79,10 +88,11 @@ form button:hover {
 /* ==== Table Styling ==== */
 table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    min-width: 800px;
+    min-width: 1000px; /* Forces scroll on smaller viewports */
+    border-collapse: separate;
     font-size: 16px;
+    table-layout: auto;
+    white-space: nowrap; /* Prevent wrapping inside cells */
 }
 
 table th, table td {
@@ -98,7 +108,7 @@ table th {
     font-weight: bold;
 }
 
-/* ==== Action Buttons and Links ==== */
+/* ==== Action Links ==== */
 .action-links {
     display: flex;
     gap: 6px;
@@ -138,15 +148,20 @@ table th {
     background-color: #016868;
 }
 
-/* ==== Responsive Styling ==== */
+/* ==== Responsive Design ==== */
 @media (max-width: 768px) {
-    table {
-        font-size: 14px;
-        min-width: 100%;
+    .main-content {
+        padding: 0 10px;
     }
 
-    form input[type="text"] {
-        min-width: 100%;
+    form.search-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    form input[type="text"],
+    form button {
+        width: 100%;
     }
 
     .action-links {
@@ -156,19 +171,15 @@ table th {
 
     .action-links a {
         font-size: 12px;
-        min-width: unset;
         width: 100%;
         padding: 8px 0;
     }
 
-    /* Ensuring consistent behavior for reused class */
-    .search-bar {
-        flex-direction: column;
-        align-items: stretch;
+    table {
+        min-width: 1000px; /* Force horizontal scroll */
     }
 
-    .search-bar input[type="text"],
-    .search-bar button {
-        width: 100%;
+    .table-wrapper {
+        overflow-x: auto;
     }
 }

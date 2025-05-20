@@ -213,6 +213,24 @@ form button:hover {
     background-color: var(--button-hover-bg);
 }
 
+#form-buttons-area .back {
+    flex: 1;
+    display: inline-block;
+    padding: 14px 20px;
+    background-color: var(--button-bg);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#form-buttons-area .back:hover {
+    background-color: var(--button-hover-bg);
+}
+
+
 /* Responsive layout */
 @media (max-width: 768px) {
     .main-content {
