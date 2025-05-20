@@ -1,5 +1,4 @@
 :root {
-    --font-family: Arial, sans-serif;
     --bg-color: whitesmoke;
     --text-color: #3F4F44;
     --accent-color: #DCD7C9;
@@ -15,7 +14,6 @@
 
 body {
     margin: 0;
-    font-family: var(--font-family);
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.5;

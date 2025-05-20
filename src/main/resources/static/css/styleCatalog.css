@@ -1,6 +1,5 @@
 /* ==== Root CSS Variables (Theme Settings) ==== */
 :root {
-    --font-family: "Arial", sans-serif;
     --bg-color: #f9f9f9;
     --text-color: #fffff0;
     --accent-color: #3F4F44FF;
@@ -13,7 +12,6 @@
 /* ==== Global Styles ==== */
 body {
     margin: 0;
-    font-family: var(--font-family);
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.5;

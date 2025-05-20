@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@400;600;700&display=swap');
 /* ==== Root theme variables for reusability ==== */
 :root {
-    --font-family: "Arial", sans-serif;
+    --font-family: "Poppins", sans-serif;
     --bg-color: #f9f9f9;
     --text-color: #3F4F44;
     --accent-color: rgba(220, 215, 201, 0.6);
@@ -51,7 +52,6 @@ body {
 .sidebar .footer-text {
     color: #ccc;
     font-size: 14px;
-    text-align: center;
     padding: 10px 0 0;
     user-select: none;
 }
@@ -123,6 +123,35 @@ body {
     user-select: none;
 }
 
+.user-profile {
+    margin-top: auto;
+    padding: 16px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--sidebar-bg);
+}
+
+.user-profile img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+}
+
+.user-profile h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--sidebar-text);
+    line-height: 1.2;
+}
+
+.user-profile span {
+    font-size: 16px;
+    color: #ccc;
+}
+
 /* ==== Main content area ==== */
 main {
     padding: 20px;
@@ -167,7 +196,7 @@ h1 {
     }
 
     /* Hide text in menu items except icon */
-    .sidebar .menu li span:not(:first-child) {
+    .sidebar .menu li span:not(:first-child), .user-profile > div {
         display: none;
     }
 
@@ -192,5 +221,9 @@ h1 {
     /* Scale down main heading */
     .main-content h1 {
         font-size: 2rem;
+    }
+
+    .user-profile img{
+        margin-left: 10px;
     }
 }
