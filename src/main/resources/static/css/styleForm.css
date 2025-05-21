@@ -69,18 +69,11 @@ input[type="checkbox"] {
     margin-right: 8px;
 }
 
-/* Always keep placeholder text left-aligned */
-input::placeholder,
-select::placeholder {
-    text-align: left !important;
-    direction: ltr !important;
-}
 
 /* Error styling */
 input.error,
-select.error {
+select.error{
     border-color: red;
-    background-color: #ffe6e6;
 }
 
 
@@ -89,7 +82,7 @@ select.error {
     font-size: 0.9rem;
     margin-top: -10px;
     margin-bottom: 10px;
-    text-align: right;
+
 }
 
 /* Decaf field */
